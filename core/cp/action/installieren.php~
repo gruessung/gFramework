@@ -1,0 +1,58 @@
+<?php
+/*
+Ok, der Nutzer will was installieren...
+Schauen wir doch ersteinmal, ob fopen aktiv ist :)
+*/
+
+if (ini_get('allow_url_fopen')=="0" OR ini_get('allow_url_include')=="0") {
+  echo 'Leider k�nnen Sie die praktische Installationsm�glichkeit nicht nutzen, da auf Ihren Webspace allow_url_fopen = Off; ist.<br /> Wenden Sie sich bei Bedarf an Ihren Hoster.';
+}
+
+/*
+Hole alle Server aus der DB
+*/
+$db = new db();
+$server = array ();
+
+$db->query("SELECT * FROM ".pfw."_updateserver ORDER BY id");
+$a=0;
+while ($row = $db->fetch()) {
+	$server[$a]['id']=$row->id;
+	$server[$a]['url']=$row->url;
+	$server[$a]['name']=$row->name;
+	$a++;
+}
+
+
+/*
+Lade die Serverpluginlisten
+*/
+$c = 0;
+$b = $a;
+$a = 0;
+while ($c < $b) {
+	echo 'Pluginserver '.$a.': '.$server[$a]['name'].'<br /><table style="width: 70%; background-color: lightblue;"><tr><td style="width:5%;">#</td><td>Pluginname</td><td>Optionen</td></tr>';
+	echo file_get_contents( $server[$a]['url']."plugins.html");
+	echo "</table><br /><br />";	
+
+	$c++;
+	$a++;
+	
+}
+
+
+/*
+Lade die Serverstylelisten
+*/
+$c = 0;
+$b = $a;
+$a = 0;
+while ($c < $b) {
+	echo 'Styleserver '.$a.': '.$server[$a]['name'].'<br /><table style="width: 70%; background-color: lightblue;"><tr><td style="width:5%;">#</td><td>Stylename</td><td>Optionen</td></tr>';
+	echo file_get_contents( $server[$a]['url']."styles.html");
+	echo "</table><br><br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>";	
+
+	$c++;
+	$a++;
+	
+}

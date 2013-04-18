@@ -1,0 +1,46 @@
+<xml>
+  <type>plugin</type>
+  <typede>Erweiterung</typede>
+  <installpath>/apps/</installpath>
+  
+  <author>solar22</author>
+  <date>25.04.2012</date>
+  <url>http://gvisions.de</url>
+  
+  <zipfile>http://files.gvisions.de/app/com.gvisions.news-0.1.zip</zipfile>
+  <version>0.1</version>
+  <comid>com.gvisions.news</comid>
+  <name>gNews</name>
+  <desc>Newsmanagement</desc>
+  <requirements>com.gvisions.framework-0.2.2</requirements>
+  <license>GPLv3</license>
+  
+  <updatesql></updatesql>
+  <installsql>CREATE TABLE IF NOT EXISTS `PFW_gvisions_news` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `author` int(10) NOT NULL DEFAULT '0',
+  `titel` text NOT NULL,
+  `text` text NOT NULL,
+  `tags` text NOT NULL,
+  `date` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Newsmanagement';
+
+CREATE TABLE IF NOT EXISTS `PFW_gvisions_news_comments` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `date` varchar(50) NOT NULL DEFAULT '0',
+  `author` varchar(50) NOT NULL DEFAULT '0',
+  `text` text NOT NULL,
+  `newsid` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO PFW_config(name, value) VALUES('gnews_menuid','1');
+
+INSERT INTO PFW_plugin_links(appid, linkname, link, appname) VALUES ('AID','News','','gNews');
+
+INSERT INTO PFW_config(name, value) VALUES('com_gvisions_news_load_from_bboard','false')
+</installsql>
+  <unistallsql></unistallsql>
+
+</xml>

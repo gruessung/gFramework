@@ -1,0 +1,22 @@
+<xml>
+  <type>style</type>
+  <typede>Style</typede>
+  <installpath>/styles/</installpath>
+  
+  <author>bgreen Foundation</author>
+  <date>3.3.2012</date>
+  <url>http://bgreen.at</url>
+  
+  <zipfile>PFADstyle.bgreen.chameleon_gvisions.zip</zipfile>
+  <version>10</version>
+  <comid>style.bgreen.chameleon_gvisions</comid>
+  <name>Chameleon gVisions</name>
+  <desc>Chameleom Theme</desc>
+  <requirements>com.gvisions.framework-0.1.2</requirements>
+  <license>n.a.</license>
+  
+  <updatesql></updatesql>
+  <installsql></installsql>
+  <unistallsql></unistallsql>
+
+</xml>

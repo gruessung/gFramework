@@ -1,0 +1,7 @@
+AuthUserFile /www/htdocs/w0098483//gvisions/gFramework/usage//.htpasswd
+AuthGroupFile /dev/null
+AuthName ByPassword
+AuthType Basic
+<Limit GET POST>
+require user w0098483
+</Limit>

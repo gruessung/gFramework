@@ -1,0 +1,152 @@
+@charset "UTF-8";
+/* Chameleon 1.0dev6-gVisions, based on Glass 1.1-1 */
+/* MenuCore 3.0-1 */
+
+/* Copyright 2009-2012 bgreen Designs, Copyright 2012 bgreen Foundation, Copyright 2008-2012 gVisions */
+
+
+/* basic settings */
+
+body {
+	font-family:Calibri,"Lucida Grande",Tahoma,Arial,Helvetica,sans-serif;
+	font-size:14px;
+	background-color:#EFEFEF;
+}
+
+.header {
+	position:absolute;
+	top:0;
+	left:0;
+	height:90px;
+	width:100%;
+	background-image:url("header.png");
+	background-repeat:repeat-x;
+	background-color:#FEFEFE;
+	background-position:bottom;
+}
+
+.header-logo {
+	position:absolute;
+	top:5px;
+	left:10px;
+}
+
+/* Ads */
+
+.header-banner {
+	position:absolute;
+	right:20%;
+	top:0;
+	height:80px;
+	width:468px;
+	font-size:10px;
+	border:0;
+}
+
+
+/* MenuCore */
+.menu, .menu ul{
+	top:90px;
+	left:0;
+	width:100%;
+	margin:0;
+	padding:5px 0 5px 00px;
+	list-style-type:none;
+	list-style-position:outside;
+	position:absolute;
+	line-height:1.5em;
+	background-color:#076b9e;
+	z-index:1;
+}
+
+.menu a, .menu a:link, .menu a:visited, .menu a:active{
+	display:block;
+	padding:0 10px 0 10px;
+	border:0;
+	color:#acacac;
+	text-decoration:none;
+
+}
+
+.menu a:hover{
+	background-color:#acacac;
+	color:#076b9e;
+}
+
+.menu li{
+	float:left;
+	position:relative;
+}
+
+.menu ul {
+	position:absolute;
+	display:none;
+	width:12em;
+	top:1.5em;
+	padding-right:20px;
+}
+
+.menu li ul a{
+	width:12em;
+	height:auto;
+	float:left;
+}
+
+.menu ul ul{
+	top:auto;
+}	
+
+.menu li ul ul {
+	left:12em;
+	margin:0px 0px 0 10px;
+}
+
+.menu li:hover ul ul, .menu li:hover ul ul ul, .menu li:hover ul ul ul ul{
+	display:none;
+}
+.menu li:hover ul, .menu li li:hover ul, .menu li li li:hover ul, .menu li li li li:hover ul{
+	display:block;
+}
+
+/* content */
+
+.content {
+	position:absolute;
+	top:130px;
+	padding:2%;
+	width:90%;
+	left:5%;
+	right:0;
+}
+
+/* Footer */
+
+.footer {
+	position:fixed;
+	bottom:0;
+	left:0;
+	right:0;
+	height:1.5em;
+	width:100%;
+	background-color:#076b9e;
+	padding:5px 5% 5px 10%;
+	color:#acacac;
+}
+
+/* Link Formatting */
+a:link {
+	color:#808080;
+	text-decoration:underline;
+}
+a:visited {
+	color:#808080;
+	text-decoration:underline;
+}
+a:active {
+	color:#808080;
+	text-decoration:underline;
+}
+a:hover {
+	color:#808080;
+	text-decoration:none;
+}
