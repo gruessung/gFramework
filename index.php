@@ -16,6 +16,7 @@ more details.
 You should have received a copy of the GNU General Public License 
 along with this program; if not, see <http://www.gnu.org/licenses/>.
 */
+  define("root",dirname(__FILE__)."/");	
 
   $debug = "";
   require_once("./core/init.php");
@@ -48,7 +49,7 @@ along with this program; if not, see <http://www.gnu.org/licenses/>.
     $db = new db();
     $db->query("SELECT * FROM ".pfw."_".plugins." WHERE `id` != '1' ORDER BY id ASC LIMIT 0,1");
     $app = $db->fetch();
-    #trigger_error("Bitte eine ID angeben. Sonst wird die erste verfügbare App gestartet.",E_USER_NOTICE);
+    #trigger_error("Bitte eine ID angeben. Sonst wird die erste verfï¿½gbare App gestartet.",E_USER_NOTICE);
     if ($app->activate != "true" AND $app->activate != "1") {
       require_once("apps/com.gvisions.framework/pluginnotfound.php");
       die();
@@ -64,12 +65,12 @@ along with this program; if not, see <http://www.gnu.org/licenses/>.
   /*
   Gibt es diese Applikation denn in unserer Datenbank ?
   
-  Baue DB Verb. dafür auf:
+  Baue DB Verb. dafï¿½r auf:
   */
   $db = new db();
   /*
   Suche nun in der DB nach der Applikation.
-  Eigentlich sollte ja nur eine Übereinstimmung vorhanden sein :)
+  Eigentlich sollte ja nur eine ï¿½bereinstimmung vorhanden sein :)
   */
   if (!empty($appid)) {
     $db->query("SELECT * FROM ".pfw."_".plugins." WHERE id = ".$appid."");
@@ -85,17 +86,17 @@ along with this program; if not, see <http://www.gnu.org/licenses/>.
   So, dann mal alles in einem array speichern
   */
   $row = $db->fetch();
-  /* Und zählen */
+  /* Und zï¿½hlen */
   $num = $db->num_rows();
   /*
-  Wenn nun mehr als eine Übereinstimmung bzw.keine Übereinstimmung gefunden werden konnte liegt ein Fehler vor. trigger_error() kommt zum Einsatz!
+  Wenn nun mehr als eine ï¿½bereinstimmung bzw.keine ï¿½bereinstimmung gefunden werden konnte liegt ein Fehler vor. trigger_error() kommt zum Einsatz!
   */
   if ($num!=1){
     #trigger_error("Die Applikation wurde nicht gefunden und/oder die ID ist mehrmals vorhanden und/oder die Applikation wurde deaktiviert und es ist keine eindeutige Identifikation mehr m&ouml;glich!",E_USER_ERROR);
   }
   /*
-  Es gibt eine Übereinstimmung, gut, dann binden wir das Teil mal ein :)
-  Und überlassen wir der Applikation den Rest.
+  Es gibt eine ï¿½bereinstimmung, gut, dann binden wir das Teil mal ein :)
+  Und ï¿½berlassen wir der Applikation den Rest.
   */
   if ($row->activate != "true" AND $row->activate != "1")
   {
