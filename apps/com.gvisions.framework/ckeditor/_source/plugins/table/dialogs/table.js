@@ -82,6 +82,9 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 							txtWidth && txtWidth.setValue( width, true );
 
+							
+							this.getStyle( 'class', 'table' );
+							
 							// Synchronize height value.
 							var height = this.getStyle( 'height', '' ),
 								txtHeight = dialog.getContentElement( 'info', 'txtHeight' );

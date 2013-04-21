@@ -31,46 +31,50 @@ error_reporting(E_ALL);
   
   function siesindhier($cat,$board,$topic,$seite = 1)
   { 
+  
+	 $return ='<ul class="breadcrumb">
+    <li><a href="index.php?app_comid=com.gvisions.bboard">Forenindex</a> <span class="divider">/</span></li>';
+	
     $db = new db(); 
-    $return = "Sie sind hier: <a href=\"index.php?app_comid=com.gvisions.bboard\">Forenindex</a>";
+
     if ($cat)
     {
       $db->query("SELECT * FROM ".pfw."_bboard_cat WHERE id = $cat");
       $row = $db->fetch();
-      $return .= ' -> <a href="index.php?app_comid=com.gvisions.bboard&action=seeCat&id='.$row->id.'">'.$row->name.'</a>';
+      $return .= ' <li><a href="index.php?app_comid=com.gvisions.bboard&action=seeCat&id='.$row->id.'">'.$row->name.'</a><span class="divider">/</span></li>';
     }
     if ($board)
     {
       $db->query("SELECT * FROM ".pfw."_bboard_board WHERE id = $board");
       $row = $db->fetch();
-      $return .= ' -> <a href="index.php?app_comid=com.gvisions.bboard&action=seeBoard&id='.$row->id.'">'.$row->name.'</a>';
+      $return .= ' <li><a href="index.php?app_comid=com.gvisions.bboard&action=seeBoard&id='.$row->id.'">'.$row->name.'</a><span class="divider">/</span></li>';
     }  
     if ($topic)
     {
       $db->query("SELECT * FROM ".pfw."_bboard_post WHERE id = $topic");
       $row = $db->fetch();
-      $return .= ' -> <a href="index.php?app_comid=com.gvisions.bboard&action=seeTopic&id='.$row->id.'">'.$row->name.'</a>';
+      $return .= ' <li> <a href="index.php?app_comid=com.gvisions.bboard&action=seeTopic&id='.$row->id.'">'.$row->name.'</a><span class="divider">/</span></li>';
     }  
     if ($seite <> 0)
     {
       if ($topic)
       {
-        $return .= ' -> <a href="index.php?app_comid=com.gvisions.bboard&action=seeTopic&id='.$topic.'&page='.$seite.'">Seite '.$seite.'</a>';
+        $return .= ' <li> <a href="index.php?app_comid=com.gvisions.bboard&action=seeTopic&id='.$topic.'&page='.$seite.'">Seite '.$seite.'</a><span class="divider">/</span></li>';
       }
       elseif ($board)
       {
-        $return .= ' -> <a href="index.php?app_comid=com.gvisions.bboard&action=seeBoard&id='.$board.'&page='.$seite.'">Seite '.$seite.'</a>';
+        $return .= '<li> <a href="index.php?app_comid=com.gvisions.bboard&action=seeBoard&id='.$board.'&page='.$seite.'">Seite '.$seite.'</a><span class="divider">/</span></li>';
       }
       elseif ($cat)
       {
-        $return .= ' -> <a href="index.php?app_comid=com.gvisions.bboard&action=seeCat&id='.$cat.'&page='.$seite.'">Seite '.$seite.'</a>';
+        $return .= '<li> <a href="index.php?app_comid=com.gvisions.bboard&action=seeCat&id='.$cat.'&page='.$seite.'">Seite '.$seite.'</a><span class="divider">/</span></li>';
       }
       else
       {
-        $return .= ' -> Seite '.$seite;
+        $return .= ' <li> Seite '.$seite.'</li>';
       }
     } 
-    $return .= "<br /><br />";
+    $return .= "</ul>";
     return $return;
   }
   

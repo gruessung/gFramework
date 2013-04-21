@@ -10,13 +10,13 @@ if (isset($_POST['login'])) {
 }
 if (!$user->IfLogin()) {
 ?>
-<b>Bitte loggen Sie sich ein:</b>
+<b>Bitte loggen Sie sich ein:</b><br><br>
 <form action="index.php" method="POST">
 
 <table>
 <tr class="tr"><td>Username</td><td><input type="text" name="username"></td></tr>
 <tr class="tr"><td>Passwort</td><td><input type="password" name="password"></td></tr>
-<tr class="tr"><td></td><td><input type="submit" value="Login" name="login" style="background-color:darkgrey;width:145px;"></td></tr>
+<tr class="tr"><td></td><td><input type="submit" class="btn btn-success" value="Login" name="login"></td></tr>
 
 </table>
 

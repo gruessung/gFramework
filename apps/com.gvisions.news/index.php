@@ -12,7 +12,7 @@
       case "index":
         $seite = 1;
         if (isset($_GET["seite"])) { $seite = $_GET["seite"]; }
-        $artikel_pro_seite = 5;
+        $artikel_pro_seite = 3;
         $sql = "SELECT * FROM ".pfw."_gvisions_news ORDER BY id DESC LIMIT ".($artikel_pro_seite * $seite - $artikel_pro_seite).",$artikel_pro_seite;";
         $db->query($sql);
         
@@ -20,37 +20,78 @@
         
         while ($row = $db->fetch())
         {
-          $html .= '<div style="width: 50%;">';
-          $html .= '<font style="font-size:16pt;"><a style="a:link, a:visited { text-decoration:none; }" href="index.php?app='.appid.'&action=seeNews&id='.$row->id.'">'.$row->titel.'<br></a></font>';
-          $html .= "<hr>";
           $db_ = new db();
           $db_->query("SELECT COUNT(id) AS anzahl FROM ".pfw."_gvisions_news_comments WHERE newsid = $row->id");
           $t = $db_->fetch(); 
-          $html .= '<i><small>am '.$row->date.' von '.$user->getUserName($row->author).' - <a href="index.php?app='.appid.'&action=seeNews&id='.$row->id.'#comments">'.$t->anzahl.' Kommentare</a>; Tags: '.$row->tags.'</small></i>';
-          $text = explode("page-break-after: always;",$row->text);
-          $html .= "<br>".$text[0];
-          $html .= '<br><i><small><a href="index.php?app='.appid.'&action=seeNews&id='.$row->id.'">weiterlesen</a></small></i>';
-          $html .= '<br><br><br></div>';
+          
+			$text = explode("page-break-after: always;",$row->text);
+
+			$tags = explode(",",$row->tags);
+			$html .= '<div class="row">
+						
+							<div class="row">
+								<div class="span8">
+									<h4><strong><a href="index.php?app='.appid.'&action=seeNews&id='.$row->id.'">'.$row->titel.'</a></strong></h4>
+								</div>
+							</div>
+						<div class="row">
+							<div class="span2">
+								<a href="#" class="thumbnail">
+									<img src="http://placehold.it/260x180" alt="">
+								</a>
+							</div>
+							<div class="span6">
+								<p>
+									'.$text[0].'
+								</p>
+								<p><a class="btn" href="index.php?app='.appid.'&app_comid='.@$_GET["app_comid"].'&action=seeNews&id='.$row->id.'">weiterlesen</a></p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="span8">
+								<p></p>
+								<p>
+								<i class="icon-user"></i> by <a href="#">'.$user->getUserName($row->author).'</a>
+								| <i class="icon-calendar"></i> '.$row->date.'
+								| <i class="icon-comment"></i> <a href="index.php?app='.appid.'&action=seeNews&id='.$row->id.'#comments">'.$t->anzahl.' Kommentare</a>
+								<!--| <i class="icon-share"></i> <a href="#">39 Shares</a>-->
+								| <i class="icon-tags"></i> Tags :'; 
+								for ($i = 0; $i < count($tags); $i++)
+								{
+									$html .= '<a href="#"><span class="label label-info">'.$tags[$i].'</span></a>&nbsp;';
+								}
+					$html .= '</p>
+							</div>
+						</div>
+						
+					 </div>
+					';
+		  
         }
         
         $sql = "SELECT COUNT(id) AS anzahl FROM ".pfw."_gvisions_news;";
         $db->query($sql);
         $row = $db->fetch();
         $gesamtSeiten = $row->anzahl / $artikel_pro_seite;
-        $html .= "<br><br>Seiten: ";
+        $html .= '<div class="pagination pagination-left"><ul><li ><a href="index.php?app='.appid.'&action=index&seite=';
+		if($seite-1 == 0) $html .= "1"; else $html .= $seite-1;
+		$html .='"><<</a></li>';
         for ($i = 0; $i < $gesamtSeiten; $i++)
         {
           $b = $i + 1;
           if ($b == $seite)
           {
-            $html .= '&nbsp; &nbsp;<b>'.$b.'</b>';
+            $html .= '<li class="disabled"><a href="#">'.$b.'</a></li>';
           }
           else
           {
-            $html .= '&nbsp; &nbsp;<a href="index.php?app='.appid.'&action=index&seite='.$b.'">'.$b.'</a>';
+            $html .= '<li><a href="index.php?app='.appid.'&action=index&seite='.$b.'">'.$b.'</a></li>';
           }
         }
-        $html .= "<br><br>";
+		
+        $html .= '<li ><a href="index.php?app='.appid.'&action=index&seite=';
+		if($seite+1 > ceil($gesamtSeiten)) $html .= $seite; else $html .= $seite+1;
+		$html .= '">>></a></li></ul></div>';
       break;
       
       case 'seeNews':
@@ -71,12 +112,16 @@
           $html .= '<font color="green">Kommentar wurde gespeichert.</font><br><br>';
         }
         
-        $sql = "SELECT * FROM ".pfw."_gvisions_news WHERE `id` = $id;";
+        $sql = "SELECT ".pfw."_gvisions_news . * , count( ".pfw."_gvisions_news_comments.newsid ) AS anzahl
+				FROM ".pfw."_gvisions_news, ".pfw."_gvisions_news_comments
+				WHERE ".pfw."_gvisions_news.`id` =$id
+				AND ".pfw."_gvisions_news_comments.newsid =$id
+				LIMIT 0 , 30";
         $db->query($sql);
         if ($db->num_rows()<=0)
         {
           $titel = "Fehler";
-          $html .= ("Artikel nicht gefunden.");
+          $html .= ('<div class="alert alert-error">Artikel nicht gefunden.</a>');
           $template = new TPL();
           $template->menuid = gnews_menuid;
           $template->id = 1;
@@ -88,11 +133,50 @@
         $row = $db->fetch();   
         $titel = $row->titel;
         
-        $html .= '<font style="font-size:18pt;">'.$row->titel.'</font><br>';
-        $html .= '<small><img src="apps/com.gvisions.framework/icons/calendar.png" border="0" height="14">'.$row->date.'<br><img src="apps/com.gvisions.framework/icons/user.png" border="0" height="14">'.$user->getUserName($row->author).'<br><img src="apps/com.gvisions.framework/icons/note.png" border="0" height="14">Tags: '.$row->tags.'</small><br><br>';
-        $html .= $row->text;
- 
-        $html .= '<br><br><h3><a name="comments"></a>Kommentare</h3>'; 
+		
+		
+		
+			$text = $row->text;
+
+			$tags = explode(",",$row->tags);
+			$html .= '<div class="row">
+					<div class="span8">
+					<div class="row">
+					<div class="span8">
+					<h4><strong><a href="index.php?app='.appid.'&action=seeNews&id='.$row->id.'">'.$row->titel.'</a></strong></h4>
+					</div>
+					</div>
+					<div class="row">
+					<div class="span2">
+					<a href="#" class="thumbnail">
+					<img src="http://placehold.it/260x180" alt="">
+					</a>
+					</div>
+					<div class="span6">
+					<p>
+					'.$text.'
+					</p>
+					</div>
+					</div>
+					<div class="row">
+					<div class="span8">
+					<p></p>
+					<p>
+					<i class="icon-user"></i> by <a href="#">'.$user->getUserName($row->author).'</a>
+					| <i class="icon-calendar"></i> '.$row->date.'
+					| <i class="icon-comment"></i> <a href="index.php?app='.appid.'&action=seeNews&id='.$row->id.'#comments">'.$row->anzahl.' Kommentare</a>
+					<!--| <i class="icon-share"></i> <a href="#">39 Shares</a>-->
+					| <i class="icon-tags"></i> Tags :'; 
+					for ($i = 0; $i < count($tags); $i++)
+					{
+						$html .= '<a href="#"><span class="label label-info">'.$tags[$i].'</span></a>&nbsp;';
+					}
+					$html .= '</p>
+					</div>
+					</div>
+					</div>
+					</div>
+					';
         
         $sql = "SELECT * FROM ".pfw."_gvisions_news_comments WHERE newsid = $id ORDER BY id DESC;";
         $db->query($sql);

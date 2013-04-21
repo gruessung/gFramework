@@ -15,7 +15,13 @@ error_reporting(E_ALL); @session_start();
  
 $debug = "<!-- \n\n***FRAMEWORK-DEBUG***\n";
 $debug .=  "Lade Pfad-Dateien...\n";
-require_once("config/path.php");
+
+
+
+define("root",preg_replace("%core%", "", dirname(__FILE__)));	
+define("core",root."core/");	
+
+
 $debug .=  "Fertig.\n\n";
 $debug .=  "Lade mysql Konfigurationsdaten.....".core."/config/mysql.php \n";
 require_once(core."/config/mysql.php");

@@ -1,2 +1,2 @@
-<a href="index.php?app_comid=com.gvisions.bboard&action=deletePosting&id={postID}"><img src="apps/com.gvisions.framework/icons/bin.png" alt="" border="0" /></a>
-<a href="index.php?app_comid=com.gvisions.bboard&action=moderation&id={topicID}&pinn"><img src="apps/com.gvisions.framework/icons/star.png" alt="" border="0" /></a>
+<a href="index.php?app_comid=com.gvisions.bboard&action=deletePosting&id={postID}"><i class="icon-remove"></i></a>
+<a href="index.php?app_comid=com.gvisions.bboard&action=moderation&id={topicID}&pinn"><i class="icon-bullhorn"></i></a>

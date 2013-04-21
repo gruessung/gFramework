@@ -10,6 +10,24 @@ CKEDITOR.editorConfig = function(config) {
    config.filebrowserUploadUrl = 'kcfinder/upload.php?type=files';
    config.filebrowserImageUploadUrl = 'kcfinder/upload.php?type=images';
    config.filebrowserFlashUploadUrl = './kcfinder/upload.php?type=flash';
+   
+   config.contentsCss = '../../styles/bootstrap/css/bootstrap.css';
+   
 };
+
+CKEDITOR.on( 'dialogDefinition', function( ev ) {
+
+    var dialogName = ev.data.name;
+    var dialogDefinition = ev.data.definition;
+
+    if ( dialogName == 'table' )
+    {
+
+        var addCssClass = dialogDefinition.getContents('advanced').get('advCSSClasses');
+
+        addCssClass['default'] = 'table table-striped table-bordered'
+
+    }
+});
 
 

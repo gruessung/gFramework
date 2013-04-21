@@ -2,12 +2,15 @@
 <html lang="de">
   <head>
     <meta charset="utf-8">
-    <title><?=$sitename?></title>
+    <title><?=sitetitle?> - <?=$sitename?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
 
     <?=$header?>
+	<script src="styles/bootstrap/js/jquery.js"></script>
+	<script type="text/javascript" src="styles/bootstrap/js/dropdown.js"></script>
+
 
     <!-- Le styles -->
     <link href="styles/style.gvisions.bootstrap_blue/css/bootstrap.css" rel="stylesheet">
@@ -55,24 +58,30 @@
           </button>
           <a class="brand" href="#"><img src="styles/style.gvisions.bootstrap_blue/img/logo.png" border="0" style="height:20px;" /></a>
           <div class="nav-collapse collapse">
+		  <?php
+			$user = new UserManagement();
+			if ($user->ifLogin())
+			{
+		  ?>
             <p class="navbar-text pull-right">
-              Logged in as <a href="#" class="navbar-link">Username</a>
-            </p>
-            <!-- //TODO DROPDOWN -->
-            
+              Hallo <a href="#" class="navbar-link"><?=$user->getUsername()?></a>!
+            </p>   			
               <?php
-                $user = new UserManagement();
+			  }
+			  
+                //http://code.google.com/p/phpwcms/source/browse/branches/dev-2.0/include/js/?r=481
+				
                 $nav = new Nav();
                 $return = "";
-                $return .= $nav->showHoricontal($menuid,"","");
+                $return .= $nav->showHoricontal("nav", "", "", $menuid);
                 
                 if ($user->ifLogin())
                 {
-                  $return .= $nav->showHoricontal(menuLoginUser,"","");
+                  $return .= $nav->showHoricontal("nav", "", "", menuLoginUser);
                 }
                 else
                 {
-                  $return .= $nav->showHoricontal(menuLogoutUser,"","");
+                  $return .= $nav->showHoricontal("nav", "", "", menuLogoutUser);
                 }
               ?>
 
@@ -83,31 +92,11 @@
 
     <div class="container-fluid">                                              
       <div class="row-fluid">
-        <div class="span3">
+	  <?php //Schauen ob der aktuellen Seite eine Sidebar zugeordnet ist, diese dann in span3 anzeigen, sonst span1 ?>
+	  <div class="span1">
+				<!-- Platz für Sidebar mit 100px -->
+	  </div>
 
-            
-            <div class="well" style="width:300px; padding: 8px 0;">
-		      <!--<ul class="nav nav-list"> 
-		      <li class="nav-header">Menu</li>        
-		      <li><a href="index.php"><i class="icon-home"></i> Startseite</a></li>
-          <li><a href="#"><i class="icon-th-list"></i> Plugins</a></li>
-          <li><a href="#"><i class="icon-comment"></i> Comments</a></li>
-		      <li class="active"><a href="#"><i class="icon-user"></i> Benutzer</a></li>
-          <li class="divider"></li>
-		      <li><a href="#"><i class="icon-comment"></i> Einstellungen</a></li>
-		      <li><a href="#"><i class="icon-share"></i> Logout</a></li>
-		</ul>-->
-    
-    
-    
-
-<ul class="nav nav-list">
-
-</ul>
-	</div>
-            
-    <!--/.well -->
-        </div><!--/span-->
         
         <!-- Content Span -->
         <div class="span9">

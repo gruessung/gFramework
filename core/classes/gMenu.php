@@ -3,7 +3,7 @@ error_reporting(E_ALL);
 //data-toggle="dropdown"
   class nav extends gFramework {
   
-    function showHoricontal($id,$class="",$submenu="",$SEO=false) {
+    function showHoricontal2($id,$class="",$submenu="",$SEO=false) {
     echo '<ul class="nav">';
     $output = "";
     $s = new db();
@@ -34,6 +34,48 @@ error_reporting(E_ALL);
     echo "</ul>";
     echo $output;
     }
+	
+	function showHoricontal($ulClass, $liClass, $dpClass, $mID)
+	{
+		$menu = "";
+		$menu .= '<ul class="'.$ulClass.'">
+		';
+		$db = new db();
+		$db->query("SELECT * FROM ".pfw."_".menu." WHERE `parent` = '0' AND `menu` = '".$mID."' ORDER BY reihe");
+		
+		while ($row=$db->fetch())
+		{
+			$subDB = new db();
+			$subDB->query("SELECT * FROM ".pfw."_".menu." WHERE parent = ".$row->id." ORDER BY reihe");
+			//Submenu gefunden
+			if ($subDB->num_rows() != 0)
+			{
+				//Oberpunkt darstellen
+				$menu .= "<li class=\"dropdown\">
+					<a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">$row->name<b class=\"caret\"></b></a>
+						<ul class=\"dropdown-menu\" role=\"menu\" aria-labelledby=\"drop\">
+					";
+				while ($subRow = $subDB->fetch())
+				{
+					$link = "index.php?app=$subRow->app&$subRow->link";
+					$menu .= '		<li role="presentation"><a role="menuitem" tabindex="-1" href="'.$link.'"><i class="'.$subRow->icon.'"></i>'.$subRow->name.'</a></li>
+					';
+				}
+				$menu .= "	</ul>
+					</li>";
+			}
+			else
+			{
+				$link = "index.php?app=$row->app&$row->link";
+				$menu .= '<li><a href="'.$link.'">'.$row->name.'</a></li>';
+			}
+		}
+		
+		$menu .= "</ul>";
+		
+		echo $menu;
+	}
+	
 
     
   

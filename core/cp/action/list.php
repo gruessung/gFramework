@@ -38,7 +38,7 @@
   */
   
   echo 'Installierte Erweiterungen:<br><div class="cel" style="height:auto;">
-    <table style="width:100%;"><tr style="border: 1px black solid;"><td>Name</td><td>Version</td><td>Beschreibung</td><td>Optionen</td></tr> '.$AppsTd.'</table></div><br /><br />';
+    <table class="table table-bordered"><tr style="border: 1px black solid;"><th>Name</th><th>Version</th><th>Beschreibung</th><th>Optionen</th></tr> '.$AppsTd.'</table></div><br /><br />';
   
   
   /************************************************************************************************/
@@ -80,6 +80,6 @@
   */
   
   echo 'Installierte Styles:<br><div class="cel" style="height:auto;">
-    <table style="width:100%;"><tr style="border: 1px black solid;"><td>Name</td><td>Version</td><td>Beschreibung</td><td>Optionen</td></tr> '.$AppsTd.'</table></div><br /><br />';
+    <table class="table table-bordered"><tr style="border: 1px black solid;"><th>Name</th><th>Version</th><th>Beschreibung</th><th>Optionen</th></tr> '.$AppsTd.'</table></div><br /><br />';
   
   

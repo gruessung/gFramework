@@ -9,5 +9,5 @@
  $template = new TPL();
  $template->menuid = 1;
  $template->sitename = "Nicht gefunden";
- $template->text = "Es ist ein Fehler aufgetreten:<br><li>die geforderte Anwendung ist deaktiviert, oder</li><li>die Anwendung konnte nicht gefunden werden, oder</li><li>die ID ist mehrmals vergeben und konnte nicht zugeordnet werden.</li>";
+ $template->text = "<div class=\"alert alert-error\"><b>Es ist ein Fehler aufgetreten:</b><br><ul><li>die geforderte Anwendung ist deaktiviert, oder</li><li>die Anwendung konnte nicht gefunden werden, oder</li><li>die ID ist mehrmals vergeben und konnte nicht zugeordnet werden.</li></ul></div>";
  $template->show();

@@ -1,5 +1,3 @@
-
-
 <?php
 
 /**
@@ -14,14 +12,20 @@ class plugin extends gFramework {
   public  $sql = '';
   public  $content = '';
   public  $comid = '';
-  function __construct($pluginName = false) {
+  public  $hook = '';
+  function __construct($pluginName = false, $hook = false) {
+	$site = "index.php";
     if(!$pluginName) return false; 
-    $this->pluginName = $pluginName;  
+    $this->pluginName = $pluginName;
+	$this->comid = $pluginName;
     if ($this->isRegist()==false OR $this->isActive()==false) {
-      $this->pluginName = 'PluginNotFound';
+      $this->pluginName = 'com.gvisions.framework';
+	  $site = "pluginnotfound.php";
     }
-    require_once('application/plugins/'.$this->pluginName.'/'.$this->pluginName.'.php');
-    $this->pluginClass = new $this->pluginName();       
+	$this->hook = $hook;
+	require_once(root.'/apps/'.$this->pluginName.'/'.$site);
+	if (!$hook)
+		$this->pluginClass = new $this->pluginName();       
   }
 
   /*
@@ -64,12 +68,14 @@ class plugin extends gFramework {
 
   $sql = new db();
   $sql->query("SELECT `id` FROM `".pfw.'_'.plugins."` WHERE `com_id` = '".$plugin."'");
+
   $num = $sql->num_rows();
 
     if ($num!=0 || $num!="" || $num!="0") {
      return true;
     } else {
      return false;
+	 
     }
   }
   
@@ -84,11 +90,12 @@ class plugin extends gFramework {
   public function isActive() {
   $sql = new db();
   $plugin = mysql_real_escape_string($this->pluginName);
-  $sql->query("SELECT * FROM `".pfw.'_'.plugins."` WHERE `com_id` = '".$plugin."' AND `activate` = 'true'");
+  $sql->query("SELECT * FROM `".pfw.'_'.plugins."` WHERE `com_id` = '".$plugin."' AND `activate` = 'true' OR `activate`= 1");
   $row = $sql->fetch();
   $num = $sql->num_rows();
     if ($num=="" OR $row->activate=="false") {
      return false;
+
     } else {
       return true;
     }

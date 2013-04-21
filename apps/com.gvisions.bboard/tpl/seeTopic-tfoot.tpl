@@ -1,11 +1,6 @@
 </table>  
-<a href="index.php?app_comid=com.gvisions.bboard&action=newText&topicid={topicID}">
-  <table border="0">   
-    <tr>
-      <td valign="center"><img border="0" src="core/images/add.png" /></td>
-      <td>Antworten</td>
-    </tr> 
-  </table>
+<a href="index.php?app_comid=com.gvisions.bboard&action=newText&topicid={topicID}" class="btn">
+	<i class="icon-plus-sign"></i> Antworten
 </a>
 <table>
     <tr>

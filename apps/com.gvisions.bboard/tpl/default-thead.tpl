@@ -1,4 +1,4 @@
-<table border=1 style="width:80%;" class="table">
+<table style="width:80%;" class="table table-striped table-bordered">
 <thead>
   <th colspan="5" style="text-align:left;"><a href="index.php?app_comid=com.gvisions.bboard&action=seeCat&id={catID}">{catName}</a></th>
 

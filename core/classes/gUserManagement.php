@@ -168,7 +168,9 @@
       return $row->group;
     }
 
-    function getUserName($id) {
+    function getUserName($id=0) {
+		if ($id ==0)
+			$id = $this->getCurrentUser();
   	    $db = new db();
   	    $db->query("SELECT `username` FROM ".pfw."_user WHERE id = $id");	
         $row = $db->fetch();

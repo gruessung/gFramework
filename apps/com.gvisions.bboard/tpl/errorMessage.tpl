@@ -1,1 +1,1 @@
-Fehler: {message}
+<div class="alert alert-error"><b>Es ist ein Fehler aufgetreten!</b><br><small>{message}</small></div>

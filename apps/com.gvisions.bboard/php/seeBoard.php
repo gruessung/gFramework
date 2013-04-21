@@ -39,11 +39,11 @@
       
       if ($row->pinned == "1")
       {
-        $tableTemplate->replace("{icon}", "star.png");
+        $tableTemplate->replace("{icon}", '<i class="icon-bullhorn"></i>');
       }
       else
       {
-        $tableTemplate->replace("{icon}", "bullet_red.png"); 
+        $tableTemplate->replace("{icon}", ""); 
       }
       
       $datum = date("d.m.Y H:i",$row->date);

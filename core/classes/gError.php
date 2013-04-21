@@ -9,10 +9,10 @@ function gError($fehlercode, $fehlertext, $fehlerdatei, $fehlerzeile)
 $echo = "";
     switch ($fehlercode) {
     case E_USER_ERROR:
-        $echo .= "<span style=\"font-color:red;\"><b>gError: Es ist ein Fehler aufgetreten:</b> [$fehlercode] $fehlertext<br />\n";
-        $echo .="  Fataler Fehler in Zeile $fehlerzeile in der Datei $fehlerdatei";
-        $echo .=", PHP " . PHP_VERSION . " (" . PHP_OS . ")<br />\n";
-        $echo .="Abbruch...<br /></span>\n";
+        $echo .= "<span style=\"color:red;\"><b>gError: Es ist ein Fehler aufgetreten:</b></span><br />Fehlercode: $fehlercode<br />\nFehlertext: $fehlertext<br /><br />\n";
+        $echo .="  Fataler Fehler in Zeile $fehlerzeile in der Datei $fehlerdatei<br />";
+        $echo .="  PHP " . PHP_VERSION . " (" . PHP_OS . ")<br />\n";
+        $echo .="Abbruch...<br />\n";
         echo $echo;
         error_log($echo, 3, root."/error.log");
         exit(1);
