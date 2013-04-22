@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_ALL); @session_start();
+error_reporting(E_ALL); @session_start(); 
  /*
    Dies ist die Hauptdatei des gFramework.
    Diese Datei durchsucht den Ordner "classes" nach alles Dateien nach dem Namensmster g*.php und includiert diese.
@@ -18,7 +18,7 @@ $debug .=  "Lade Pfad-Dateien...\n";
 
 
 
-define("root",preg_replace("%core%", "", dirname(__FILE__)));	//Test
+define("root",preg_replace("%core%", "", dirname(__FILE__)));	
 define("core",root."core/");	
 
 
