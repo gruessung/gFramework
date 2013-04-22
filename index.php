@@ -17,7 +17,25 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, see <http://www.gnu.org/licenses/>.
 */
   
+ 	//SEO URLS, get Parameter for GET
+	$self = explode("/index.php",$_SERVER['PHP_SELF']);
+	$self = $self[0];
 
+	$rs = preg_replace("%$self/%", "",$_SERVER['REQUEST_URI']);
+	$explode = explode("/", $rs);
+	
+	for ($i = 0; $i < count($explode); $i++)
+	{
+		if ($i % 2 == 0)
+		{
+			$_GET[$explode[$i]] = @$explode[$i+1];	
+			$i ++;
+		}
+		
+	}
+	define ("web_root", $self);
+  
+  
   $debug = "";
   require_once("./core/init.php");
   
