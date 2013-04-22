@@ -118,10 +118,11 @@
 				AND ".pfw."_gvisions_news_comments.newsid =$id
 				LIMIT 0 , 30";
         $db->query($sql);
-        if ($db->num_rows()<=0)
+		$row = $db->fetch();
+        if (empty($row->titel))
         {
           $titel = "Fehler";
-          $html .= ('<div class="alert alert-error">Artikel nicht gefunden.</a>');
+          $html .= ('<div class="alert alert-error"><b>Fehler: </b>Artikel nicht gefunden.</div>');
           $template = new TPL();
           $template->menuid = gnews_menuid;
           $template->id = 1;
@@ -130,7 +131,7 @@
           $template->show(); 
           die();
         }
-        $row = $db->fetch();   
+           
         $titel = $row->titel;
         
 		
@@ -207,7 +208,7 @@
       break;
       
       default:
-        $html .= 'Ich habe keine Ahnung, was du willst, diese Aktion gibt es nicht :)';
+        $html .= '<div class="alert alert-error">Fehler: Aktion nicht gefunden.</div>';
       break; 
     }
   }
