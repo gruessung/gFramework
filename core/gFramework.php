@@ -18,7 +18,7 @@ $debug .=  "Lade Pfad-Dateien...\n";
 
 
 
-define("root",preg_replace("%core%", "", dirname(__FILE__)));	
+define("root",preg_replace("%core%", "", dirname(__FILE__)));	//Test
 define("core",root."core/");	
 
 
