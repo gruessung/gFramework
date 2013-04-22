@@ -8,12 +8,12 @@
     <meta name="author" content="">
 
     <?=$header?>
-	<script src="styles/bootstrap/js/jquery.js"></script>
-	<script type="text/javascript" src="styles/bootstrap/js/dropdown.js"></script>
+	<script src="<?=web_root?>/styles/bootstrap/js/jquery.js"></script>
+	<script type="text/javascript" src="<?=web_root?>/styles/bootstrap/js/dropdown.js"></script>
 
 
     <!-- Le styles -->
-    <link href="styles/style.gvisions.bootstrap_blue/css/bootstrap.css" rel="stylesheet">
+    <link href="<?=web_root?>/styles/style.gvisions.bootstrap_blue/css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -36,7 +36,7 @@
       $('.dropdown-toggle').dropdown();
     </script>
     
-    <link href="styles/style.gvisions.bootstrap_blue/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="<?=web_root?>/styles/style.gvisions.bootstrap_blue/css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -56,7 +56,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#"><img src="styles/style.gvisions.bootstrap_blue/img/logo.png" border="0" style="height:20px;" /></a>
+          <a class="brand" href="#"><img src="<?=web_root?>/styles/style.gvisions.bootstrap_blue/img/logo.png" border="0" style="height:20px;" /></a>
           <div class="nav-collapse collapse">
 		  <?php
 			$user = new UserManagement();
