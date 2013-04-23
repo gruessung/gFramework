@@ -3,13 +3,15 @@ error_reporting(E_ALL);
 //data-toggle="dropdown"
   class nav extends gFramework {
   
-    function showHoricontal2($id,$class="",$submenu="",$SEO=false) {
+    function showHoricontal2($id,$class="",$submenu="") {
     echo '<ul class="nav">';
     $output = "";
     $s = new db();
     $s->query("SELECT * FROM ".pfw."_".menu." WHERE `parent` = '0' AND `menu` = '".$id."' ORDER BY reihe");   
     while ($row=$s->fetch()) {
       $link = "index.php?app=".$row->app."&".$row->link;
+	  if (seo_url=="true") $link = web_root."/app/$row->app/".preg_replace("%=%", "/", $row->link);
+	  echo $link;
     
       $g=new db();
       $g->query("SELECT * FROM ".pfw."_".menu." WHERE parent = ".$row->id." ORDER BY reihe");
@@ -19,8 +21,9 @@ error_reporting(E_ALL);
               <a href="#" class="'.$class.' dropdown-toggle" data-toggle="dropdown">'.$row->name.' <b class="caret"></b></a>';
         $output .= '<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">';
         while ($h=$g->fetch()) {
-         $lin2k = "index.php?app=".$h->app."&".$h->link;
-          $output .= '<li><a href="'.$lin2k.'" class="'.$submenu.'">'.$h->name.'</a></li>';
+        	$lin2k = "index.php?app=".$h->app."&".$h->link;
+        	if (seo_url=="true") $lin2k = web_root."/app/$h>app/".preg_replace("%=%", "/", $h->link);
+          	$output .= '<li><a href="'.$lin2k.'" class="'.$submenu.'">'.$h->name.'</a></li>';
         }
         $output .= "</ul></li>";
       }
@@ -58,7 +61,8 @@ error_reporting(E_ALL);
 				while ($subRow = $subDB->fetch())
 				{
 					$link = "index.php?app=$subRow->app&$subRow->link";
-					$menu .= '		<li role="presentation"><a role="menuitem" tabindex="-1" href="'.$link.'"><i class="'.$subRow->icon.'"></i>'.$subRow->name.'</a></li>
+					if (seo_url=="true") $link = web_root."/app/$row->app/".preg_replace("%=%", "/", $row->link);
+					$menu .= '<li role="presentation"><a role="menuitem" tabindex="-1" href="'.$link.'"><i class="'.$subRow->icon.'"></i>'.$subRow->name.'</a></li>
 					';
 				}
 				$menu .= "	</ul>
@@ -67,6 +71,7 @@ error_reporting(E_ALL);
 			else
 			{
 				$link = "index.php?app=$row->app&$row->link";
+				if (seo_url=="true") $link = web_root."/app/$row->app/".preg_replace("%=%", "/", $row->link);
 				$menu .= '<li><a href="'.$link.'">'.$row->name.'</a></li>';
 			}
 		}
