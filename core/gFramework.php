@@ -42,11 +42,12 @@ $dbc->connect($host,$user,$pass,$db);
 $dbc->query("SELECT * FROM ".pfw."_config");
 while ($cfg=$dbc->fetch()) {
   define($cfg->name,$cfg->value);
+  $debug .= "Name: $cfg->name Value: $cfg->value\n";
 }
 $debug .= "Framework fertig geladen. Script wird nun ausgefuehrt!\n\n";
 $debug .= "***FRAMEWORK-DEBUG***-->\n\n";
 if (debug=="true") {
-  
+  echo $debug;
 }
 
 if (function_exists("gError")) {

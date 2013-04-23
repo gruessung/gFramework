@@ -5,7 +5,7 @@
   */
   
   if ((!isset($_GET['appid']) OR !is_numeric($_GET['appid'])) AND !isset($_GET['comid'])){
-    trigger_error("Die Variable \"appid\" ist entweder nicht übergeben worden oder entspricht nicht den Vorraussetzungen.",E_USER_ERROR);
+    trigger_error("Die Variable \"appid\" ist entweder nicht &uuml;bergeben worden oder entspricht nicht den Vorraussetzungen.",E_USER_ERROR);
   }
   $appid = 0;
   if (isset($_GET['comid']) && !empty($_GET['comid']))
@@ -35,7 +35,7 @@
   
   /*
   Schauen wir mal nach der  und laden alle Daten in ein array() ^^
-  Und natürlich wider zählen
+  Und natï¿½rlich wider zï¿½hlen
   */
   
   $db->query("SELECT * FROM ".pfw."_".plugins." WHERE ID = ".$appid);
@@ -49,7 +49,7 @@
   */
   
   if ($num != 1) {
-    trigger_error("Die ID ist nicht vorhanden und/oder mehrmals vergeben. Dies macht eine eindeutige Identifikation unmöglich.",E_USER_ERROR);
+    trigger_error("Die ID ist nicht vorhanden und/oder mehrmals vergeben. Dies macht eine eindeutige Identifikation unmï¿½glich.",E_USER_ERROR);
   }
   
   /*
@@ -59,5 +59,5 @@
   require_once(apppath."/cp/index.php");
   
   /*
-  Für mich ist die Sache damit erledigt :)
+  Fï¿½r mich ist die Sache damit erledigt :)
   */
