@@ -13,7 +13,7 @@
     $xml = simplexml_load_string(file_get_contents($updsrv->url."/get.php?comid=".$row->com_id));
     $updXml = $updsrv->url."/".$xml->extension[0]->attributes()->xml;
     $xml = simplexml_load_string(file_get_contents($updXml));
-    echo "<li>Beginne Update f�r ".$row->name."!</li>";
+    echo "<li>Beginne Update f&uuml;r ".$row->name."!</li>";
     echo "<li>Pr&uuml;fe Systemanforderungen f�r ".$row->name."...</li>";
 
     $req = explode(",",$xml->requirements);
@@ -28,7 +28,7 @@
       $sql ="SELECT * FROM ".pfw."_plugins WHERE `com_id` = '$comid' LIMIT 1;";
       $db->query($sql);
       $row = $db->fetch();
-      echo "Ben�tige $comid-$version";
+      echo "Ben&ouml;tige $comid-$version";
     
       if (empty($row->version)) { $vorhanden = "nicht installiert"; } else { $vorhanden = $row->version; }
       if ($version <= $vorhanden AND $vorhanden != "nicht installiert") {
@@ -72,7 +72,7 @@ if ($xml->type=="style") {
 } elseif ($xml->type=="plugin") {
   $newExt = new plugin();
 } else {
-  trigger_error("Typenzuordnung nicht m�glich. Fehler in XML Datei.",E_USER_ERROR);
+  trigger_error("Typenzuordnung nicht m&ouml;glich. Fehler in XML Datei.",E_USER_ERROR);
 }
 
 echo "<li>Entpacke ".$xml->typede." nach $installPath</li>";
@@ -94,7 +94,7 @@ continue;
       if ($sql!="") {
         $db_update = new db();
 		$queries = explode(";", $sql);
-		for ($u = 0; $u < count($queries) - q; $u++)
+		for ($u = 0; $u < count($queries) - 1; $u++)
 		{
 			$db_update->query($queries[$u]);	
 		}
