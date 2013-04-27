@@ -14,7 +14,7 @@ INSERT INTO `PFW_config` (`name`, `value`) VALUES
 ('sitetitle', 'gVisions'),
 ('site_online', 'true'),
 ('site_offline_reason', 'Entwicklermodus'),
-('firstApp', '41'),
+('firstApp', 'com.gvisions.moonlight'),
 ('menuLoginUser', '5'),
 ('menuLogoutUser', '6');
 
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `PFW_gmoonpages` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 INSERT INTO `PFW_gmoonpages` (`id`, `titel`, `delete`, `text`, `menu`) VALUES
-(1, 'Startseite', 'true', '[hero]<h1>Willkommen auf deiner neuen Seite.</h1>[/hero]', '1');
+(1, 'Startseite', 'true', '<h1>Willkommen auf deiner neuen Seite.</h1><br><a href="core/cp/index.php">Hier kommst du in dsa gCP</a>', '1');
 
 
 CREATE TABLE IF NOT EXISTS `PFW_groups` (
@@ -71,17 +71,8 @@ CREATE TABLE IF NOT EXISTS `PFW_hooks` (
 
 INSERT INTO `PFW_hooks` (`id`, `name`, `code`, `regex`, `pattern`) VALUES
 (2, 'banner', '', 0, ''),
-(3, 'header', '<!--\r\nDiese Website wird mit dem gFramework betrieben. www.gvisions.de\r\n(c) 2008 - 2011\r\n\r\nThis website based on gFramework.\r\nwww.gvisions.de \r\n(c) 2008 - 2011\r\n-->\r\n', 0, ''),
-(4, 'imprint', '', 0, ''),
-(5, 'Hero Unit', '<div class="hero-unit">$2</div>', 1, '/(\[hero\])(.+?)(\[\/hero\])/is'),
-(7, 'Button', '<button class="btn">$2</button>', 1, '/(\[button\])(.+?)(\[\/button\])/is'),
-(8, 'Button 1Attribut', '<button class="btn btn-$2">$3</button>', 1, '/(\[button (.+?)\])(.+?)(\[\/button\])/is'),
-(9, 'Infobox', '<div class="alert alert-info">\n<button type="button" class="close" data-dismiss="alert">x</button>\n$2\n</div>', 1, '/(\[alert-info\])(.+?)(\[\/alert\])/is'),
-(10, 'Fehlerbox', '<div class="alert alert-error">\n<button type="button" class="close" data-dismiss="alert">x</button>\n$2\n</div>', 1, '/(\[alert-error\])(.+?)(\[\/alert\])/is'),
-(11, 'Warnungsbox', '<div class="alert alert-warning">\r\n<button type="button" class="close" data-dismiss="alert">x</button>\r\n$2\r\n</div>\r\n', 1, '/(\[alert-warning\])(.+?)(\[\/alert\])/is'),
-(12, 'Erfolgsmeldung', '<div class="alert alert-success">\r\n<button type="button" class="close" data-dismiss="alert">x</button>\r\n$2\r\n</div>\r\n', 1, '/(\[alert-success\])(.+?)(\[\/alert\])/is'),
-(14, 'Icon', '<i class="icon-$2"></i>', 1, '/(\[icon (.+?)\])/is'),
-(15, 'Well', '<div class="well">\r\n$2\r\n</div>', 1, '/(\[well\])(.+?)(\[\/well\])/is');
+(3, 'header', '<!--\r\nDiese Website wird mit dem gFramework betrieben. www.gvisions.de\r\n(c) 2008 - 2013\r\n\r\nThis website based on gFramework.\r\nwww.gvisions.de \r\n(c) 2008 - 2013\r\n-->\r\n', 0, ''),
+(4, 'imprint', '', 0, '');
 
 CREATE TABLE IF NOT EXISTS `PFW_menuentries` (
   `id` int(99) NOT NULL AUTO_INCREMENT,
@@ -123,8 +114,8 @@ CREATE TABLE IF NOT EXISTS `PFW_plugins` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=45 ;
 
 INSERT INTO `PFW_plugins` (`id`, `name`, `activate`, `desc`, `com_id`, `version`, `path`, `updateServer`) VALUES
-(1, 'gFramework', 'true', 'gFramework. Grundcore des Systems.', 'com.gvisions.framework', '0.2.2', '/www/htdocs/w0098483/gvisions/gFramework/apps/com.gvisions.framework/', '1'),
-(41, 'gMoon!ight', 'true', 'Content Management System', 'com.gvisions.moonlight', '0.2.2', '/www/htdocs/w0098483/gvisions/gFramework//apps/com.gvisions.moonlight', '1');
+(1, 'gFramework', 'true', 'gFramework. Grundcore des Systems.', 'com.gvisions.framework', '0.3.1', '/www/htdocs/w0098483/gvisions/gFramework/apps/com.gvisions.framework/', '1'),
+(41, 'gMoon!ight', 'true', 'Content Management System', 'com.gvisions.moonlight', '0.3', '/www/htdocs/w0098483/gvisions/gFramework//apps/com.gvisions.moonlight', '1');
 
 CREATE TABLE IF NOT EXISTS `PFW_plugin_links` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
