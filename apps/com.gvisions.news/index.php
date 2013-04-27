@@ -35,11 +35,11 @@
 								</div>
 							</div>
 						<div class="row">
-							<div class="span2">
+							<!--<div class="span2">
 								<a href="#" class="thumbnail">
 									<img src="http://placehold.it/260x180" alt="">
 								</a>
-							</div>
+							</div>-->
 							<div class="span6">
 								<p>
 									'.$text[0].'
@@ -148,11 +148,11 @@
 					</div>
 					</div>
 					<div class="row">
-					<div class="span2">
+					<!--<div class="span2">
 					<a href="#" class="thumbnail">
 					<img src="http://placehold.it/260x180" alt="">
 					</a>
-					</div>
+					</div>-->
 					<div class="span6">
 					<p>
 					'.$text.'

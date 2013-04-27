@@ -65,7 +65,7 @@ along with this program; if not, see <http://www.gnu.org/licenses/>.
     Baue DB Verb. auf und schaue, welche App als aller erstes in der DB steht,  laden wir dann einfach diese. Der Nutzer wird darauf per trigger_error(); hingewisen!
     */
     $db = new db();
-    $db->query("SELECT * FROM ".pfw."_".plugins." WHERE `id` != '1' ORDER BY id ASC LIMIT 0,1");
+    $db->query("SELECT * FROM ".pfw."_".plugins." WHERE `id` = '".firstApp."' OR `com_id` = '".firstApp."' ORDER BY id ASC LIMIT 0,1");
     $app = $db->fetch();
     #trigger_error("Bitte eine ID angeben. Sonst wird die erste verf�gbare App gestartet.",E_USER_NOTICE);
     if ($app->activate != "true" AND $app->activate != "1") {
