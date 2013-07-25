@@ -92,6 +92,7 @@ require_once("../init.php");
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Systemverwaltung<b class="caret"></b></a>
 
 						<ul class="dropdown-menu" role="menu" aria-labelledby="drop">
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?action=verwalten&appid=1&ac=settings"><i class="icon-wrench"></i>Einstellungen</a></li>
 							<li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?action=verwalten&appid=1&ac=user"><i class="icon-user"></i>Benutzer</a></li>
 							<li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?action=verwalten&appid=1&ac=groups"><i class="icon-th-large"></i>Gruppen</a></li>
 							<li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?action=verwalten&appid=1&ac=menus"><i class="icon-th-list"></i>Menus</a></li>
