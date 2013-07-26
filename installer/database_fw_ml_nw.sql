@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `PFW_gmoonpages` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 INSERT INTO `PFW_gmoonpages` (`id`, `titel`, `delete`, `text`, `menu`) VALUES
-(1, 'Startseite', 'true', '<h1>Willkommen auf deiner neuen Seite.</h1><br><a href="core/cp/index.php">Hier kommst du in dsa gCP</a>', '1');
+(1, 'Startseite', 'true', '<h1>Willkommen auf deiner neuen Seite.</h1><br><a href="core/cp/index.php">Hier kommst du in das gCP</a>', '1');
 
 
 CREATE TABLE IF NOT EXISTS `PFW_groups` (
