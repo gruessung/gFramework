@@ -16,7 +16,8 @@ INSERT INTO `PFW_config` (`name`, `value`) VALUES
 ('site_offline_reason', 'Entwicklermodus'),
 ('firstApp', 'com.gvisions.moonlight'),
 ('menuLoginUser', '5'),
-('menuLogoutUser', '6');
+('menuLogoutUser', '6'),
+('seo_url', 'false');
 
 CREATE TABLE IF NOT EXISTS `PFW_gmoonpages` (
   `id` int(99) NOT NULL AUTO_INCREMENT,
