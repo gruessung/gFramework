@@ -83,6 +83,7 @@ CREATE TABLE IF NOT EXISTS `PFW_menuentries` (
   `menu` int(200) NOT NULL DEFAULT '0',
   `reihe` varchar(10) NOT NULL DEFAULT '',
   `app` int(200) NOT NULL,
+  `icon` varchar(10) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=80 ;
 
