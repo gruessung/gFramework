@@ -1,9 +1,9 @@
 <?php
   require_once (apppath."/php/stuff/bbcode.php");
   $db = new db();
-  $user = new UserManagement();
+  $user = new gUserManagement();
   
-  $tpl = new TPL();
+  $tpl = new gTPL();
   
   $page = 1;
   if (isset($_GET["page"]))
@@ -58,7 +58,7 @@
       $tpl->replace("{postID}", $row->id);
       if ($user->userGroup($user->getCurrentUser()) == admin_group)
       {
-      	$mod = new TPL();
+      	$mod = new gTPL();
       	$mod->fetchTemplate(apppath."/tpl/seeTopic-mod.tpl");
       	$mod->replace("{postID}", $row->id);
       	$mod->replace("{topicID}", $topicID);

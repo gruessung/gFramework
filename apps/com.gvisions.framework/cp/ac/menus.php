@@ -147,7 +147,7 @@
       
            //Eextension
           echo '<fieldset><legend>Auf eine Erweiterung verlinken</legend>';
-      $db->query("SELECT * FROM ".pfw."_plugin_links ORDER BY appid ASC"); //TODO: Tabelle pfw_plugin_links erstellen, um da Links zu speichern, welche die Apps mitbringen, zB gFramework->login, logout, regist
+      $db->query("SELECT * FROM ".pfw."_plugin_links ORDER BY appid ASC");
           echo '<form action="index.php?action=verwalten&appid=1&ac=menus&ac2=newEntrie&parent='.$parent.'&id='.$id.'&" method="POST">
                 <select name="app">';
           while ($row = $db->fetch())

@@ -2,7 +2,7 @@
 	$id = mysql_real_escape_string($_GET["id"]);
 	
 	if (!is_numeric($id)) die("Fehler mit der ID");
-	$user = new UserManagement();
+	$user = new gUserManagement();
 	$db = new db();
 	$db->query("SELECT * FROM ".pfw."_bboard_post WHERE id = $id");
 	$row = $db->fetch();

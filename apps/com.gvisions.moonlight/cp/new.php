@@ -24,7 +24,7 @@ Gebe Formular aus
   if (is_numeric($_POST['menu'])) {
     $menu = $_POST['menu'];
   } else {
-      trigger_error("Keine Menu ID übergeben. Benutze Standard 1.",E_USER_NOTICE);
+      trigger_error("Keine Menu ID ï¿½bergeben. Benutze Standard 1.",E_USER_NOTICE);
       $menu="1";
   }
   $q = $sql->query("INSERT INTO ".pfw."_gmoonpages (`titel`,`delete`,`text`,`menu`) VALUES ('$titel','$del','$text','$menu');");
@@ -77,6 +77,6 @@ echo $CKEditor->editor("text","");
   <tr class="tr"><td>Optionen:</td><td><input type="submit" name="edit" value="Speichern"> | <input type="reset" name="reset" value="&Auml;nderungen verwerfen"></td></tr>
 
   </form>
-
+</table>
  
 

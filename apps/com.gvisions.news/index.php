@@ -1,5 +1,5 @@
 <?php
-  $user = new UserManagement();
+  $user = new gUserManagement();
   $db = new db();
   $action = 'index';
   $html = "";
@@ -123,7 +123,7 @@
         {
           $titel = "Fehler";
           $html .= ('<div class="alert alert-error"><b>Fehler: </b>Artikel nicht gefunden.</div>');
-          $template = new TPL();
+          $template = new gTPL();
           $template->menuid = gnews_menuid;
           $template->id = 1;
           $template->sitename = "News - ".$titel;
@@ -213,7 +213,7 @@
     }
   }
   
-  $template = new TPL();
+  $template = new gTPL();
   $template->menuid = gnews_menuid;
   $template->id = 1;
   $template->sitename = "News - ".$titel;

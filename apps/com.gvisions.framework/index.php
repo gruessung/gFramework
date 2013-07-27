@@ -4,10 +4,10 @@
  */
 
  /*
- So, dann starten wir mal die TPL Engine..*brum* xP
+ So, dann starten wir mal die gTPL Engine..*brum* xP
  */
- $template = new TPL();
- $user = new UserManagement();
+ $template = new gTPL();
+ $user = new gUserManagement();
  if (isset($_GET['login'])) {       
     if ($user->ifLogin()) {
       $user->UserLogout();
@@ -17,7 +17,7 @@
       <a href="index.php?app='.$app.'">Zur Startseite</a>.';
     }
     elseif (isset($_POST['login'])) {    
-      $user = new UserManagement();
+      $user = new gUserManagement();
        
       if (!isset($_GET['from']) OR @$_GET['from']=="") {
         if ($_GET['app'] == "1")
@@ -44,7 +44,7 @@
   if ($_POST['sicherheitscode']!=$_POST['c']) { $html = 'Sicherheitscode falsch!<br />
   <a href="index.php?p=Login">Zur&uuml;ck</a>.'; 
   } else { 
-    $user = new UserManagement();   
+    $user = new gUserManagement();
   
     if ($user->Registration(mysql_real_escape_string(@$_POST['user']),mysql_real_escape_string(@$_POST['pass']),mysql_real_escape_string(@$_POST['mail']))==true) {
         $html = 'Ihr Konto wurde angelegt.<br />
@@ -99,7 +99,7 @@
  
  }
  elseif (isset($_GET["imprint"])) {
-   $hook = new gTPLHooks();
+   $hook = new gHooks();
    $template->id = 1;
    $template->menuid = 1;
    $template->sitename = "Impressum";

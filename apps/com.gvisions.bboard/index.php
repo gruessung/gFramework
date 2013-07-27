@@ -5,7 +5,7 @@ error_reporting(E_ALL);
   define("apppath","apps/com.gvisions.bboard/");
   define("postPerPage", 10);
 
-	$user = new UserManagement();	
+	$user = new gUserManagement();
 	$db = new db();  
   
   function showEditor($value)
@@ -110,7 +110,7 @@ error_reporting(E_ALL);
       {
       	$seite = $wievielseiten + 1;	
       }
-      $user = new UserManagement();
+      $user = new gUserManagement();
       $autor = $user->getUserName($row->autor);
       $topic = $row->id;
       if ($row->topic != 0)
@@ -139,7 +139,7 @@ error_reporting(E_ALL);
       $count = $db->num_rows() + 1;
       $seite = $count / postPerPage;
       if ($seite < 1) $seite = 1;
-      $user = new UserManagement();
+      $user = new gUserManagement();
       $autor = $user->getUserName($row->autor);
       $topic = $row->id;
       if ($row->topic != 0)
@@ -216,7 +216,7 @@ error_reporting(E_ALL);
 		//require_once plugins.'BBoard/php/online.php';
 
 		
-    $template = new TPL();
+    $template = new gTPL();
     $template->menuid = bboard_menuid;
     $template->id = 1;
     $template->sitename = "Forum - ".$titel;

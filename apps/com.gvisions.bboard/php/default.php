@@ -4,7 +4,7 @@
   $db_boards = new db();
   
   //Templates in Variablen laden
-  $tableTemplate = new TPL();
+  $tableTemplate = new gTPL();
   
 
   

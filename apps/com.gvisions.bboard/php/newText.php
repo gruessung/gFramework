@@ -1,5 +1,5 @@
 <?php
-  $user = new UserManagement();
+  $user = new gUserManagement();
   if ($user->ifLogin() == false)
   {
     $html .= "<center>Zum Schreiben bitte einloggen.<br><a href=\"javascript:history.back();\">Zur&uuml;ck</a></center>";

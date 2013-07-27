@@ -8,7 +8,7 @@
 <link href="styles/style.bgreen.chameleon_gvisions/style.css" rel="stylesheet" type="text/css" />
 <?=$header?>
 <!--- Chameleon 1.0dev2; Copyright 2009-2012 bgreen Designs, Copyright 2012 bgreen Foundation --->
-<!--- Content Copyright 2006-2008 Grüßung Software, Copyright 2008-2012 gVisions --->
+<!--- Content Copyright 2006-2008 Grï¿½ï¿½ung Software, Copyright 2008-2012 gVisions --->
 </head>
 
 <body>
@@ -19,7 +19,7 @@
 
 <ul class="menu">
   <?php
-    $user = new UserManagement();
+    $user = new gUserManagement();
     $nav = new Nav();
     $nav->showHoricontal($menuid,"","");
     

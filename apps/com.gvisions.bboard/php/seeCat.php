@@ -4,7 +4,7 @@
   $db_boards = new db();
   
   //Templates in Variablen laden
-  $tableTemplate = new TPL();
+  $tableTemplate = new gTPL();
 
   $catID = mysql_real_escape_string($_GET["id"]);
   if (empty($catID) || !is_numeric($catID))
@@ -36,7 +36,7 @@
       $tableTemplate->replace("{catID}", $row_cat->id);
       $tableTemplate->replace("{catName}", $row_cat->name);
       
-      $titel = $row_cat->name; // für Seitentitel
+      $titel = $row_cat->name; // fï¿½r Seitentitel
       
       $html .= $tableTemplate->getTemplate();
       

@@ -1,11 +1,5 @@
 
 
-<u>Menu:</u>     
-<a href="index.php?action=verwalten&appid=1&ac=user">Benutzer</a> &bull;
-<a href="index.php?action=verwalten&appid=1&ac=groups">Gruppen</a> &bull;
-<a href="index.php?action=verwalten&appid=1&ac=menus">Menus</a> &bull;
-<a href="index.php?action=verwalten&appid=1&ac=offlineMode">On/Offline</a>
-  <br>  <br>
 <div class="gframework-c" style="left: 150px;width: 90%;">
 <?php
 $ac = "";
@@ -17,7 +11,7 @@ if (isset($_GET['ac'])) {
 switch ($ac) {
 
   default:
-    echo("Willkommen im gCP Teil des gFrameworks");
+    echo("Seite nicht gefunden.");
   break;
   
   case "editStyle":
@@ -38,6 +32,10 @@ switch ($ac) {
 
   case "menus":
     require_once("ac/menus.php");
+  break;
+  
+  case "settings":
+	require_once("ac/settings.php");
   break;
 
 

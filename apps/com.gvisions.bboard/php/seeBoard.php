@@ -1,8 +1,8 @@
 <?php
   $db = new db();
-  $user = new UserManagement();
+  $user = new gUserManagement();
   
-  $tableTemplate = new TPL();
+  $tableTemplate = new gTPL();
   
   $boardID = mysql_real_escape_string($_GET["id"]);
   if (empty($boardID) || !is_numeric($boardID))
@@ -24,7 +24,7 @@
     $tableTemplate->replace("{boardID}", $row_board->id);
     $tableTemplate->replace("{boardName}", $row_board->name);
     
-    $titel = $row_board->name; // für Seitentitel
+    $titel = $row_board->name; // fï¿½r Seitentitel
     
     $html .= $tableTemplate->getTemplate();
     

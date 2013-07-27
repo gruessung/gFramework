@@ -8,8 +8,7 @@
     <meta name="author" content="">
 
     <?=$header?>
-	<script src="<?=web_root?>/styles/bootstrap/js/jquery.js"></script>
-	<script type="text/javascript" src="<?=web_root?>/styles/bootstrap/js/dropdown.js"></script>
+
 
 
     <!-- Le styles -->
@@ -59,7 +58,7 @@
           <a class="brand" href="#"><img src="<?=web_root?>/styles/style.gvisions.bootstrap_blue/img/logo.png" border="0" style="height:20px;" /></a>
           <div class="nav-collapse collapse">
 		  <?php
-			$user = new UserManagement();
+			$user = new gUserManagement();
 			if ($user->ifLogin())
 			{
 		  ?>

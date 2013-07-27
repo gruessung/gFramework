@@ -5,11 +5,11 @@
 /*
 Kommen wir zum eingemachten...^.^
 
-Prüfen wir ob pageid da ist und numeric ist
+Prï¿½fen wir ob pageid da ist und numeric ist
 */
 
 if (!isset($_GET['pageid']) OR !is_numeric($_GET['pageid'])){
-  trigger_error("Fehler bei der Verarbeitung / Übergabe von 'pageid'",E_USER_ERROR);
+  trigger_error("Fehler bei der Verarbeitung / ï¿½bergabe von 'pageid'",E_USER_ERROR);
 }
 
 /*
@@ -41,7 +41,7 @@ Gebe Formular aus
   if (is_numeric($_POST['menu'])) {
     $menu = $_POST['menu'];
   } else {
-      trigger_error("Keine Menu ID übergeben. Benutze Standard 1.",E_USER_NOTICE);
+      trigger_error("Keine Menu ID ï¿½bergeben. Benutze Standard 1.",E_USER_NOTICE);
       $menu="1";
   }
   $q =$sql->query('UPDATE `'.db.'`.`'.pfw.'_gmoonpages` SET `titel` = \''.$titel.'\', `menu` = \''.$menu.'\', `delete` = \''.$del.'\', `text` = \''.$text.'\' WHERE `'.pfw.'_gmoonpages`.`id` = '.$id.' LIMIT 1;');
@@ -93,6 +93,7 @@ echo $CKEditor->editor("text", $row->text);
   <tr class="tr"><td>Optionen:</td><td><input type="submit" name="edit" value="Speichern"> | <input type="reset" name="reset" value="&Auml;nderungen verwerfen"></td></tr>
 
   </form>
+</table>
 
  
 

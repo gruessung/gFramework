@@ -6,9 +6,9 @@
  */
 
  /*
- So, dann starten wir mal die TPL Engine..*brum* xP
+ So, dann starten wir mal die gTPL Engine..*brum* xP
  */
- $template = new TPL();
+ $template = new gTPL();
  
    /*
   Schaue ob ein Plugin per GET aufgerufen wurde, wenn nein, lade normale Seite.

@@ -43,7 +43,7 @@
       }
       else
       {
-            $user = new UserManagement();   
+            $user = new gUserManagement();
   
             if ($user->Registration(mysql_real_escape_string(@$_POST['user']),mysql_real_escape_string(@$_POST['pass']),mysql_real_escape_string(@$_POST['mail']),mysql_real_escape_string(@$_POST['groupid']) )==true) {
                 $html = 'Das Konto wurde angelegt.<br />';

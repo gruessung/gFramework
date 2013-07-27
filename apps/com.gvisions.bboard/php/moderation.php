@@ -4,7 +4,7 @@
 		$id = mysql_real_escape_string($_GET["id"]);
 		if (!is_numeric($id)) die("Fehler bei ID");
 		$db = new db();
-		$user = new UserManagement();
+		$user = new gUserManagement();
 		if (/*$row->autor != $user->getCurrentUser() ||*/ $user->userGroup($user->getCurrentUser()) != admin_group)
 		{
 			die ("Du bist nicht zu dieser Aktion berechtigt.");	
