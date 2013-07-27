@@ -1,5 +1,5 @@
 <?php
-$test = new UserManagement();
+$test = new gUserManagement();
 ?>
 Bereite Installation vor...
 <?php
@@ -26,7 +26,7 @@ for ($s=0;$s < $anzahl; $s++) {
   $sql ="SELECT * FROM ".pfw."_plugins WHERE `com_id` = '$comid' LIMIT 1;";
   $db->query($sql);
   $row = $db->fetch();
-  echo "Benötige $comid-$version";
+  echo "Benï¿½tige $comid-$version";
 
   if (empty($row->version)) { $vorhanden = "nicht installiert"; } else { $vorhanden = $row->version; }
   if ($version <= $vorhanden AND $vorhanden != "nicht installiert") {

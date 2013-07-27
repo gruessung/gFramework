@@ -10,7 +10,6 @@ require_once("../init.php");
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <?=$header?>
 	<script src="../../styles/bootstrap/js/jquery.js"></script>
 	<script type="text/javascript" src="../../styles/bootstrap/js/dropdown.js"></script>
 
@@ -62,7 +61,7 @@ require_once("../init.php");
           <a class="brand" href="#"><img src="../../styles/style.gvisions.bootstrap_blue/img/logo.png" border="0" style="height:20px;" /></a>
           <div class="nav-collapse collapse">
 		  <?php
-			$user = new UserManagement();
+			$user = new gUserManagement();
 			if ($user->ifLogin())
 			{
 		  ?>
@@ -144,7 +143,7 @@ require_once("../init.php");
 								  "logout" => "acp",
 								  "filemanager" => "system");
 				  
-				  $user = new UserManagement();
+				  $user = new gUserManagement();
 				  if (!$user->ifLogin()) {
 					error_log("try to login\n", 3, root."/corecp.log");
 					require_once("action/login.php"); 

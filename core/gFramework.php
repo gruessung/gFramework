@@ -26,7 +26,26 @@ $debug .=  "Fertig.\n\n";
 $debug .=  "Lade mysql Konfigurationsdaten.....".core."/config/mysql.php \n";
 require_once(core."/config/mysql.php");
 require_once(core."/config/mysql_tables.php");
-$debug .=  "\nFertig!\nLade Frameworkklassen...\n";
+$debug .=  "\nFertig!\nLade Frameworkklassen per Autoload\n";
+
+
+
+foreach (glob(core."/errors/g*.php") as $filename) {
+    $file = $filename;
+    $t = require_once $file;
+
+    if ($t==false ) { trigger_error("Fehler beim einbinden der Datei $file",E_USER_ERROR);}
+    $debug.=  "*** Includiere Frameworkklasse: ".$file." - Groesse: " . filesize($filename) . "kb\n";
+}
+
+
+foreach (glob(core."/interfaces/I*.php") as $filename) {
+    $file = $filename;
+    $t = require_once $file;
+
+    if ($t==false ) { trigger_error("Fehler beim einbinden der Datei $file",E_USER_ERROR);}
+    $debug.=  "*** Includiere Frameworkklasse: ".$file." - Groesse: " . filesize($filename) . "kb\n";
+}
 
 foreach (glob(core."/classes/g*.php") as $filename) {
     $file = $filename;
@@ -35,7 +54,12 @@ foreach (glob(core."/classes/g*.php") as $filename) {
     if ($t==false ) { trigger_error("Fehler beim einbinden der Datei $file",E_USER_ERROR);}
    $debug.=  "*** Includiere Frameworkklasse: ".$file." - Groesse: " . filesize($filename) . "kb\n";
 }
+
+
+
+
 $debug .= "Lade Config aus Datenbank...\n";
+
 /* Verbinde nun zur mySQL DB */
 $dbc = new db();
 $dbc->connect($host,$user,$pass,$db);

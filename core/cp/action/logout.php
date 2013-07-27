@@ -1,5 +1,5 @@
 <?php
-  $user = new UserManagement();
+  $user = new gUserManagement();
   $user->UserLogout();
   echo "Du wurdest ausgeloggt.";
 ?>

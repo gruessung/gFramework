@@ -1,9 +1,9 @@
 <?php
 
-$test = new UserManagement();
+$test = new gUserManagement();
 date_default_timezone_set('UTC');
 /*
-  gFramework Install Wizward for new applications and styles
+  gFramework gInstall Wizward for new applications and styles
 */
 
 if (!Isset($_GET['step']) OR !is_numeric($_GET['step'])) {trigger_error("Paramater step fehlt oder ist falsch!",E_USER_ERROR);}
@@ -34,7 +34,7 @@ else
 $xmlFile =  $url.$xmlFile;
 $xmlFileName = basename($xmlFile);
 
-$gInstall = new Install();
+$gInstall = new gInstall();
 
 $t = require_once("$pfad/step$step.php");
 if (!$t) { trigger_error("File step$step.php not found.",E_USER_ERROR); }

@@ -1,14 +1,14 @@
 <?php
 
   /*
-    Class UserManagement
+    Class gUserManagement
     By gVisions (c) 2009
     gUserManagement
     www.gvisions.de
     This file is a part of the gFramework
   */
   
-  class UserManagement extends gFramework {
+  class gUserManagement extends gFramework {
 
     var $gSessionUse = false;
     private $facebook = 0;
@@ -114,7 +114,7 @@
       if ($Framework['Config']['UseProfile']==true) {
         $db->query("DELETE FROM `".db."`.`".prafix."_ProfileData` WHERE `ProfileData`.`userid` = ".$userid." LIMIT 1;");
       }
-      $message = $Lang['UserManagement']['DeleteUserOk'];
+      $message = $Lang['gUserManagement']['DeleteUserOk'];
       $return = array();
       $return['message'] = $message;
       $return['bool'] = true;
@@ -136,7 +136,7 @@
       echo $db->num_rows();
       $sql = "INSERT INTO ".pfw."_user (`id`, `username`, `password`, `mail`, `group`) VALUES (NULL, '".$username."', '".md5($password)."', '".$email."', '7');";
       $db->query($sql);
-      /*$return['message'] = $Lang['UserManagement']['RegistrationComplete'];
+      /*$return['message'] = $Lang['gUserManagement']['RegistrationComplete'];
       $return['bool'] = true;
       return $return;  */
       	return true;

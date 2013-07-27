@@ -1,6 +1,6 @@
 <?php
 error_reporting(E_ALL);
-class Install extends gFramework {
+class gInstall extends gFramework {
   
   function download($file) {
     if(!fwrite(fopen('downloads/'.basename($file),'w+'),file_get_contents($file))) { return false; } else { return true; }

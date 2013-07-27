@@ -1,5 +1,5 @@
 <?php
-$test = new UserManagement();
+$test = new gUserManagement();
 ?>
 Lesen Sie sich die Bestimmungen durch und akzeptieren Sie diese:<br>
 <?php

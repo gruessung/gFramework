@@ -16,8 +16,8 @@
   $db->query("SELECT * FROM ".pfw."_".plugins." ORDER BY id");
   
   /*
-  Und nun alles zählen und ab in einen array()
-  Dann schonmal die Tabellenzeile erstellen, dann ist das auch weg von der Todo xd
+  Und nun alles zï¿½hlen und ab in einen array()
+  Dann schonmal die Tabellenzeile erstellen
   */
   
   $AppsNum = $db->num_rows();
@@ -59,8 +59,8 @@
   $db->query("SELECT * FROM ".pfw."_styles ORDER BY id");
   
     /*
-  Und nun alles zählen und ab in einen array()
-  Dann schonmal die Tabellenzeile erstellen, dann ist das auch weg von der Todo xd
+  Und nun alles zï¿½hlen und ab in einen array()
+  Dann schonmal die Tabellenzeile erstellen
   */
   
   $AppsNum = $db->num_rows();

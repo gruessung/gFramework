@@ -62,7 +62,7 @@ error_reporting(E_ALL);
 				{
 					$link = "index.php?app=$subRow->app&$subRow->link";
 					if (seo_url=="true") $link = web_root."/app/$row->app/".preg_replace("%=%", "/", $row->link);
-					$menu .= '<li role="presentation"><a role="menuitem" tabindex="-1" href="'.$link.'"><i class="'.$subRow->icon.'"></i>'.$subRow->name.'</a></li>
+					$menu .= '<li role="presentation"><a role="menuitem" tabindex="-1" href="'.$link.'"><i class="'.@$subRow->icon.'"></i>'.$subRow->name.'</a></li>
 					';
 				}
 				$menu .= "	</ul>

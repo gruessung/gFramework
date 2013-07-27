@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ALL);
 #date 30.12.2011
-class TPL extends gFramework {
+class gTPL extends gFramework {
 
 
   public $menu = 0;
@@ -22,7 +22,7 @@ class TPL extends gFramework {
   /**
    * function setFiles
    *
-   * setter für files[array] 
+   * setter fï¿½r files[array] 
    * 
    * @param foo
    * @param bar

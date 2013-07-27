@@ -1,10 +1,10 @@
 <?php
 /*
-gTPLHooks.php
+gHooks.php
 (c) 2009 Alexander Gruessung
 Diese Datei ist Part des gFrameworks!
 */
-class gTPLHooks extends gFramework {
+class gHooks extends gFramework {
 
   /*
   function search

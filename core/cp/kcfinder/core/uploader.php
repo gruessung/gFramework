@@ -134,7 +134,7 @@ class uploader {
             ini_set('session.cookie_domain', $_CONFIG['_sessionDomain']);
         switch ($this->cms) {
             case "drupal": break;
-            default: session_start(); include '../../gFramework.php'; $user = new UserManagement(); if(!$user->ifLogin() || $user->isAllowed($_SESSION['userid'],"acp")==false || $user->isAllowed($_SESSION['userid'],"system")==false) { die('You are not login into gFramework or you have not the permission to use the file manager.'); }break;
+            default: session_start(); include '../../gFramework.php'; $user = new gUserManagement(); if(!$user->ifLogin() || $user->isAllowed($_SESSION['userid'],"acp")==false || $user->isAllowed($_SESSION['userid'],"system")==false) { die('You are not login into gFramework or you have not the permission to use the file manager.'); }break;
         }
 
         // RELOAD DEFAULT CONFIGURATION

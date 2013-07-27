@@ -1,5 +1,5 @@
 <?php
-$test = new UserManagement();   #geht dies nicht, wird die Datei manuell aufgerufen, das wollen wir nicht xd
+$test = new gUserManagement();   #geht dies nicht, wird die Datei manuell aufgerufen, das wollen wir nicht xd
 
 $zip= new ZipArchive;
 echo "<li>&Ouml;ffne ".root."temp/$xmlFileName und lese aus...</li>";
@@ -30,7 +30,7 @@ if ($xml->type=="style") {
 } elseif ($xml->type=="plugin") {
   $newExt = new plugin();
 } else {
-  trigger_error("Typenzuordnung nicht möglich. Fehler in XML Datei.",E_USER_ERROR);
+  trigger_error("Typenzuordnung nicht mï¿½glich. Fehler in XML Datei.",E_USER_ERROR);
 }
 
 
@@ -61,9 +61,9 @@ if (isset($_GET['forceupdate'])) {
 else {
 echo 'Fehler beim entpacken!<br />';
 $newExt->Delete($comid);
-echo $xml->typede." wurde aus der Datenbank gelöscht<br />";
+echo $xml->typede." wurde aus der Datenbank gelï¿½scht<br />";
 @unlink(root."temp/".$fileName);
-echo "<li>Temporäre Dateien wurden gelöscht";
+echo "<li>Temporï¿½re Dateien wurden gelï¿½scht";
 #}
 }
 if (!empty($xml->installsql)) {
@@ -78,7 +78,7 @@ if (!empty($xml->installsql)) {
     if($db->query(preg_replace("%PFW%",pfw,$que))==false) {  
     echo "<li>Fehler beim vornehmen der Datenbank&auml;nderungen";
     $newExt->Delete($comid);
-    echo $xml->typede." wurde aus der Datenbank gelöscht<br />";
+    echo $xml->typede." wurde aus der Datenbank gelï¿½scht<br />";
     }
     else 
     {
