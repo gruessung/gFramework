@@ -6,7 +6,7 @@ gFramework is a CMS to create websites with plugins like news system, bulletin b
 Installation
 ============
 
-Download master in your htdocs directory.
+Download latest release from https://github.com/solar22/gFramework/releases
 
 Unpack zip file.
 
