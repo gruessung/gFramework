@@ -31,7 +31,7 @@
 						
 							<div class="row">
 								<div class="span8">
-									<h4><strong><a href="index.php?app='.appid.'&action=seeNews&id='.$row->id.'">'.$row->titel.'</a></strong></h4>
+									<h4><strong><a href="index.php?app='.appid.'&app_comid='.app_comid.'&action=seeNews&id='.$row->id.'">'.$row->titel.'</a></strong></h4>
 								</div>
 							</div>
 						<div class="row">
@@ -44,7 +44,7 @@
 								<p>
 									'.$text[0].'
 								</p>
-								<p><a class="btn" href="index.php?app='.appid.'&app_comid='.@$_GET["app_comid"].'&action=seeNews&id='.$row->id.'">weiterlesen</a></p>
+								<p><a class="btn" href="index.php?app='.appid.'&app_comid='.app_comid.'&action=seeNews&id='.$row->id.'">weiterlesen</a></p>
 							</div>
 						</div>
 						<div class="row">
@@ -53,7 +53,7 @@
 								<p>
 								<i class="icon-user"></i> by <a href="#">'.$user->getUserName($row->author).'</a>
 								| <i class="icon-calendar"></i> '.$row->date.'
-								| <i class="icon-comment"></i> <a href="index.php?app='.appid.'&action=seeNews&id='.$row->id.'#comments">'.$t->anzahl.' Kommentare</a>
+								| <i class="icon-comment"></i> <a href="index.php?app='.appid.'&app_comid='.app_comid.'&action=seeNews&id='.$row->id.'#comments">'.$t->anzahl.' Kommentare</a>
 								<!--| <i class="icon-share"></i> <a href="#">39 Shares</a>-->
 								| <i class="icon-tags"></i> Tags :'; 
 								for ($i = 0; $i < count($tags); $i++)
@@ -73,7 +73,7 @@
         $db->query($sql);
         $row = $db->fetch();
         $gesamtSeiten = $row->anzahl / $artikel_pro_seite;
-        $html .= '<div class="pagination pagination-left"><ul><li ><a href="index.php?app='.appid.'&action=index&seite=';
+        $html .= '<div class="pagination pagination-left"><ul><li ><a href="index.php?app='.appid.'&app_comid='.app_comid.'&action=index&seite=';
 		if($seite-1 == 0) $html .= "1"; else $html .= $seite-1;
 		$html .='"><<</a></li>';
         for ($i = 0; $i < $gesamtSeiten; $i++)
@@ -85,11 +85,11 @@
           }
           else
           {
-            $html .= '<li><a href="index.php?app='.appid.'&action=index&seite='.$b.'">'.$b.'</a></li>';
+            $html .= '<li><a href="index.php?app='.appid.'&app_comid='.app_comid.'&action=index&seite='.$b.'">'.$b.'</a></li>';
           }
         }
 		
-        $html .= '<li ><a href="index.php?app='.appid.'&action=index&seite=';
+        $html .= '<li ><a href="index.php?app='.appid.'&app_comid='.app_comid.'&action=index&seite=';
 		if($seite+1 > ceil($gesamtSeiten)) $html .= $seite; else $html .= $seite+1;
 		$html .= '">>></a></li></ul></div>';
       break;
@@ -123,7 +123,7 @@
         {
           $titel = "Fehler";
           $html .= ('<div class="alert alert-error"><b>Fehler: </b>Artikel nicht gefunden.</div>');
-          $template = new gTPL();
+          $template = new TPL();
           $template->menuid = gnews_menuid;
           $template->id = 1;
           $template->sitename = "News - ".$titel;
@@ -144,7 +144,7 @@
 					<div class="span8">
 					<div class="row">
 					<div class="span8">
-					<h4><strong><a href="index.php?app='.appid.'&action=seeNews&id='.$row->id.'">'.$row->titel.'</a></strong></h4>
+					<h4><strong><a href="index.php?app='.appid.'&app_comid='.app_comid.'&action=seeNews&id='.$row->id.'">'.$row->titel.'</a></strong></h4>
 					</div>
 					</div>
 					<div class="row">
@@ -165,7 +165,7 @@
 					<p>
 					<i class="icon-user"></i> by <a href="#">'.$user->getUserName($row->author).'</a>
 					| <i class="icon-calendar"></i> '.$row->date.'
-					| <i class="icon-comment"></i> <a href="index.php?app='.appid.'&action=seeNews&id='.$row->id.'#comments">'.$row->anzahl.' Kommentare</a>
+					| <i class="icon-comment"></i> <a href="index.php?app='.appid.'&app_comid='.app_comid.'&action=seeNews&id='.$row->id.'#comments">'.$row->anzahl.' Kommentare</a>
 					<!--| <i class="icon-share"></i> <a href="#">39 Shares</a>-->
 					| <i class="icon-tags"></i> Tags :'; 
 					for ($i = 0; $i < count($tags); $i++)

@@ -64,7 +64,8 @@ $debug .= "Lade Config aus Datenbank...\n";
 $dbc = new db();
 $dbc->connect($host,$user,$pass,$db);
 $dbc->query("SELECT * FROM ".pfw."_config");
-while ($cfg=$dbc->fetch()) {
+while ($cfg=$dbc->fetch())
+{
   define($cfg->name,$cfg->value);
   $debug .= "Name: $cfg->name Value: $cfg->value\n";
 }

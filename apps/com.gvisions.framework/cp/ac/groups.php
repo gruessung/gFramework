@@ -5,12 +5,12 @@
     $db->query("SELECT * FROM ".pfw."_group_right WHERE `group` = '$group' AND `right` = '$flag'");
     $t = $db->fetch();
     if ($db->num_rows() == "1" OR $db->num_rows() == 1) {
-      $d = '<a href="" onClick="document.location.href=\'index.php?action=verwalten&appid=1&ac=groups&ac2=rights&id='.$group.'&delete='.$t->id.'\'"> 
+      $d = '<a href="#" onClick="document.location.href=\'index.php?action=verwalten&appid=1&ac=groups&ac2=rights&id='.$group.'&delete='.$t->id.'\'">
             <input type="checkbox"  checked></a>';
        
   
     } else {
-      $d = '<a href="" onClick="document.location.href=\'index.php?action=verwalten&appid=1&ac=groups&ac2=rights&id='.$group.'&new='.$flag.'\'">   
+      $d = '<a href="#" onClick="document.location.href=\'index.php?action=verwalten&appid=1&ac=groups&ac2=rights&id='.$group.'&new='.$flag.'\'">
             <input type="checkbox"></a>';
     }
     return $d;
@@ -36,7 +36,7 @@
           if (isset($_GET['delete'])) {
             $d = mysql_real_escape_string($_GET['delete']);
             $db->query("DELETE FROM `".db."`.`".pfw."_group_right` WHERE `".pfw."_group_right`.`id` = $d;");
-            echo"<script>alert('Gespeichert.');</script>";
+            echo'<div class="alert alert-success"><b>Gespeichert</b></div>';
           }
           if (isset($_GET['new'])) {
             $d = mysql_real_escape_string($_GET['new']);
@@ -48,7 +48,7 @@
                       VALUES (
                       NULL ,  '$id',  '$d'
                       );");
-            echo"<script>alert('Gespeichert.');</script>";
+              echo'<div class="alert alert-success"><b>Gespeichert</b></div>';
           }
               
           $db = new db();

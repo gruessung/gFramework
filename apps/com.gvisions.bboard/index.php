@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 
   define("apppath","apps/com.gvisions.bboard/");
-  define("postPerPage", 10);
+  define("postPerPage", 5);
 
 	$user = new gUserManagement();
 	$db = new db();  
@@ -105,11 +105,9 @@ error_reporting(E_ALL);
       $row = $db->fetch();
       $db->query("SELECT id FROM ".pfw."_bboard_post WHERE topic = $row->topic ORDER BY id DESC");
       $count = $db->num_rows();
-      $wievielseiten = $count / postPerPage;
-      for ($a = 0; $a < $wievielseiten; $a++)
-      {
-      	$seite = $wievielseiten + 1;	
-      }
+      $wievielseiten = round($count / postPerPage);
+
+
       $user = new gUserManagement();
       $autor = $user->getUserName($row->autor);
       $topic = $row->id;
@@ -180,7 +178,7 @@ error_reporting(E_ALL);
     
 		switch ($action) {
 		case "index":
-      $titel = "Forenindex";
+            $titel = "Forenindex";
 			include 'apps/com.gvisions.bboard/php/default.php';
 		break;
 		case "seeCat":
@@ -200,10 +198,12 @@ error_reporting(E_ALL);
 			include 'apps/com.gvisions.bboard/php/saveText.php';
 		break;
 		case "deletePosting":
+            $titel ="Moderation";
 			include 'apps/com.gvisions.bboard/php/deletePosting.php';
 		break;
 		case "moderation":
 			include 'apps/com.gvisions.bboard/php/moderation.php';
+            $titel = "Moderation";
 		break;
 		case "getrss":
 			include 'apps/com.gvisions.bboard/php/getrss.php';

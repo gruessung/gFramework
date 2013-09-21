@@ -34,9 +34,7 @@ require_once("../init.php");
         }
       }
     </style>
-    <script>
-      $('.dropdown-toggle').dropdown();
-    </script>
+
     
     <link href="../../styles/style.gvisions.bootstrap_blue/css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -58,7 +56,7 @@ require_once("../init.php");
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#"><img src="../../styles/style.gvisions.bootstrap_blue/img/logo.png" border="0" style="height:20px;" /></a>
+          <a class="brand" href="../../index.php" target="_blank"><img src="../../styles/style.gvisions.bootstrap_blue/img/logo.png" border="0" style="height:20px;" /></a>
           <div class="nav-collapse collapse">
 		  <?php
 			$user = new gUserManagement();
@@ -73,33 +71,59 @@ require_once("../init.php");
 			  ?>
 			<ul class="nav">
 				<li><a href="index.php">Start</a></li>
-				<li><a href="index.php?action=installieren">Installieren</a></li>
-				<li><a href="index.php?action=list">Erweiterungen und Styles</a></li>
-				<?php
-				$plugin = new plugin();
-				if ($plugin->isRegist("com.gvisions.moonlight") == true)
-				{
-					echo '<li><a href="index.php?action=verwalten&comid=com.gvisions.moonlight">Seiten</a></li>';
-				}  
-				if ($plugin->isRegist("com.gvisions.news") == true)
-				{
-					echo '<li><a href="index.php?action=verwalten&comid=com.gvisions.news">News</a></li>';
-				}  				
-				?>
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Installieren<b class="caret"></b></a>
+
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="drop">
+
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?action=installieren"><i class="icon-globe"></i>&nbsp;per Server</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?action=install_upload"><i class="icon-chevron-up"></i>&nbsp;per Upload</a></li>
+
+                    </ul>
+                </li>
+
+                    <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Erweiterungen und Styles<b class="caret"></b></a>
+
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="drop">
+
+                        <?php
+                        $plugin = new plugin();
+                        if ($plugin->isRegist("com.gvisions.moonlight") == true)
+                        {
+                            echo '<li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?action=verwalten&comid=com.gvisions.moonlight"><i class="icon-file"></i>&nbsp;Seiten</a></li>';
+                        }
+                        if ($plugin->isRegist("com.gvisions.news") == true)
+                        {
+                            echo '<li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?action=verwalten&comid=com.gvisions.news"><i class="icon-bullhorn"></i>&nbsp;News</a></li>';
+                        }
+                        if ($plugin->isRegist("com.gvisions.bboard") == true)
+                        {
+                            echo '<li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?action=verwalten&comid=com.gvisions.bboard"><i class="icon-comment"></i>&nbsp;Forum</a></li>';
+                        }
+                        ?>
+
+                        <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?action=design"><i class="icon-tint"></i>Style-Generator</a></li>-->
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?action=list"><i class="icon-th-list"></i>&Uuml;bersicht</a></li>
+                    </ul>
+                </li>
+
+
 				
 				<li class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Systemverwaltung<b class="caret"></b></a>
 
 						<ul class="dropdown-menu" role="menu" aria-labelledby="drop">
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?action=verwalten&appid=1&ac=settings"><i class="icon-wrench"></i>Einstellungen</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?action=verwalten&appid=1&ac=user"><i class="icon-user"></i>Benutzer</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?action=verwalten&appid=1&ac=groups"><i class="icon-th-large"></i>Gruppen</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?action=verwalten&appid=1&ac=menus"><i class="icon-th-list"></i>Menus</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?action=verwalten&appid=1&ac=offlineMode"><i class="icon-wrench"></i>Wartungsmodus</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?action=verwalten&appid=1&ac=settings"><i class="icon-wrench"></i>&nbsp;Einstellungen</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?action=verwalten&appid=1&ac=user"><i class="icon-user"></i>&nbsp;Benutzer</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?action=verwalten&appid=1&ac=groups"><i class="icon-th-large"></i>&nbsp;Gruppen</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?action=verwalten&appid=1&ac=menus"><i class="icon-th-list"></i>&nbsp;Menus</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="index.php?action=verwalten&appid=1&ac=offlineMode"><i class="icon-wrench"></i>&nbsp;Wartungsmodus</a></li>
 						</ul>
 				</li>				
 
-				<li><a target="_blank" href="kcfinder/browse.php?type=images&CKEditor=text&CKEditorFuncNum=2&langCode=de">Filemanager</a></li>
+				<li><a target="_blank" href="filemanager/filemanager.php">Filemanager</a></li>
 				<li><a href="index.php?action=logout">Logout</a></li>
 			</ul>
 
@@ -141,7 +165,8 @@ require_once("../init.php");
 								  "verwalten" => "system",
 								  "activate" => "system",
 								  "logout" => "acp",
-								  "filemanager" => "system");
+								  "filemanager" => "system",
+                                  "design" => "system");
 				  
 				  $user = new gUserManagement();
 				  if (!$user->ifLogin()) {
@@ -181,19 +206,12 @@ require_once("../init.php");
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../../styles/style.gvisions.bootstrap_blue/js/jquery.js"></script>
-    <script src="../../styles/style.gvisions.bootstrap_blue/js/bootstrap-transition.js"></script>
-    <script src="../../styles/style.gvisions.bootstrap_blue/js/bootstrap-alert.js"></script>
-    <script src="../../styles/style.gvisions.bootstrap_blue/js/bootstrap-modal.js"></script>
-    <script src="../../styles/style.gvisions.bootstrap_blue/js/bootstrap-dropdown.js"></script>
-    <script src="../../styles/style.gvisions.bootstrap_blue/js/bootstrap-scrollspy.js"></script>
-    <script src="../../styles/style.gvisions.bootstrap_blue/js/bootstrap-tab.js"></script>
-    <script src="../../styles/style.gvisions.bootstrap_blue/js/bootstrap-tooltip.js"></script>
-    <script src="../../styles/style.gvisions.bootstrap_blue/js/bootstrap-popover.js"></script>
-    <script src="../../styles/style.gvisions.bootstrap_blue/js/bootstrap-button.js"></script>
-    <script src="../../styles/style.gvisions.bootstrap_blue/js/bootstrap-collapse.js"></script>
-    <script src="../../styles/style.gvisions.bootstrap_blue/js/bootstrap-carousel.js"></script>
-    <script src="../../styles/style.gvisions.bootstrap_blue/js/bootstrap-typeahead.js"></script>
+    <script src="../../styles/bootstrap/js/jquery.js"></script>
+    <script src="../../styles/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="<?=web_root?>/styles/bootstrap/js/dropdown.js"></script>
+    <script>
+        $('.dropdown-toggle').dropdown();
+    </script>
 
   </body>
 </html>

@@ -35,7 +35,7 @@ class gHooks extends gFramework {
     $db->query("SELECT * FROM ".pfw."_hooks WHERE `name` = '".$name."';");
     $row = $db->fetch();
     if (empty($row->code)) {
-      return "Hook $name not found.";
+      return "Hook $name is empty.";
     }
     return $row->code;
   }

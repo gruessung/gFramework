@@ -13,41 +13,48 @@
 
     <!-- Le styles -->
     <link href="<?=web_root?>/styles/style.gvisions.bootstrap_blue/css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-      .sidebar-nav {
-        padding: 9px 0;
-      }
+      <style type="text/css">
+          body {
+              padding-top: 60px;
+              padding-bottom: 40px;
+          }
+          .sidebar-nav {
+              padding: 9px 0;
+          }
 
-      @media (max-width: 980px) {
-        /* Enable use of floated navbar text */
-        .navbar-text.pull-right {
-          float: none;
-          padding-left: 5px;
-          padding-right: 5px;
-        }
-      }
-    </style>
-    <script>
-      $('.dropdown-toggle').dropdown();
-    </script>
-    
+          @media (max-width: 980px) {
+              /* Enable use of floated navbar text */
+              .navbar-text.pull-right {
+                  float: none;
+                  padding-left: 5px;
+                  padding-right: 5px;
+              }
+          }
+      </style>
+
+
+
     <link href="<?=web_root?>/styles/style.gvisions.bootstrap_blue/css/bootstrap-responsive.css" rel="stylesheet">
+    <!-- <style>
+               /* Override Bootstrap Responsive CSS fixed navbar */
+           @media (max-width: 979px) {
+               .navbar-fixed-top,
+               .navbar-fixed-bottom {
+                   position: fixed;
+                   margin-left: 0px;
+                   margin-right: 0px;
+               }
+           }
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="../assets/js/html5shiv.js"></script>
-    <![endif]-->
+       </style>-->
+
 
   
   </head>
 
   <body>
 
-    <div class="navbar navbar-fixed-top">
+  <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -55,36 +62,41 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#"><img src="<?=web_root?>/styles/style.gvisions.bootstrap_blue/img/logo.png" border="0" style="height:20px;" /></a>
-          <div class="nav-collapse collapse">
-		  <?php
-			$user = new gUserManagement();
+          <a class="brand" href="index.php"><img src="<?=web_root?>/styles/style.gvisions.bootstrap_blue/img/logo.png" border="0" style="height:20px;" /></a>
+
+
+		 <?php
+         $user = new gUserManagement();
 			if ($user->ifLogin())
 			{
 		  ?>
-            <p class="navbar-text pull-right">
-              Hallo <a href="#" class="navbar-link"><?=$user->getUsername()?></a>!
-            </p>   			
+
+
+            <div class="nav-collapse collapse">
+                <p class="navbar-text pull-right">
+                    Hallo <a href="#" class="navbar-link"><?=$user->getUsername()?></a>!
+                </p>
+
               <?php
 			  }
-			  
+
                 //http://code.google.com/p/phpwcms/source/browse/branches/dev-2.0/include/js/?r=481
-				
+
                 $nav = new Nav();
-                $return = "";
-                $return .= $nav->showHoricontal("nav", "", "", $menuid);
-                
+
+                $nav->showHoricontal("nav", "", "", $menuid);
+
                 if ($user->ifLogin())
                 {
-                  $return .= $nav->showHoricontal("nav", "", "", menuLoginUser);
+                  $nav->showHoricontal("nav", "", "", menuLoginUser);
                 }
                 else
                 {
-                  $return .= $nav->showHoricontal("nav", "", "", menuLogoutUser);
+                  $nav->showHoricontal("nav", "", "", menuLogoutUser);
                 }
               ?>
 
-          </div><!--/.nav-collapse -->
+            </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>

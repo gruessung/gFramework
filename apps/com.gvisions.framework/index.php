@@ -3,9 +3,7 @@
  gFramework Frontend
  */
 
- /*
- So, dann starten wir mal die gTPL Engine..*brum* xP
- */
+
  $template = new gTPL();
  $user = new gUserManagement();
  if (isset($_GET['login'])) {       

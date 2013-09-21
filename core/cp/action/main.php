@@ -32,7 +32,7 @@
 			<td><b>gVisions News</b></td>
 		</tr>
 		<tr>
-			<td><iframe src="http://news.gvisions.de" style="border:0px #FFFFFF none;" name="news" scrolling="auto" frameborder="1" align=aus marginheight="0px" marginwidth="0px" height="200" ></iframe></td>
+			<td><iframe src="http://news.gvisions.de" style="border:0px #FFFFFF none; width:100%;" name="news" scrolling="auto" frameborder="1" align=aus marginheight="0px" marginwidth="0px" height="200" ></iframe></td>
 		</tr>
 	   </table>
 	</div>

@@ -14,7 +14,7 @@
     $updXml = $updsrv->url."/".$xml->extension[0]->attributes()->xml;
     $xml = simplexml_load_string(file_get_contents($updXml));
     echo "<li>Beginne Update f&uuml;r ".$row->name."!</li>";
-    echo "<li>Pr&uuml;fe Systemanforderungen f�r ".$row->name."...</li>";
+    echo "<li>Pr&uuml;fe Systemanforderungen f&uuml;r ".$row->name."...</li>";
 
     $req = explode(",",$xml->requirements);
     $anzahl = count($req);

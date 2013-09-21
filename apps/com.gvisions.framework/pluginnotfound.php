@@ -3,9 +3,6 @@
  gFramework Frontend
  */
 
- /*
- So, dann starten wir mal die gTPL Engine..*brum* xP
- */
  $template = new gTPL();
  $template->menuid = 1;
  $template->sitename = "Nicht gefunden";

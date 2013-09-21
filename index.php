@@ -79,6 +79,7 @@ along with this program; if not, see <http://www.gnu.org/licenses/>.
     die();
     
   }
+
   #if ($appid=="1" OR $app_comid=="com.gvisions.framework") { trigger_error("Die App mit der ID1 stellt das Framework dar, und kann nicht geladen werden.",E_USER_ERROR);}
   /*
   Gibt es diese Applikation denn in unserer Datenbank ?
@@ -122,7 +123,6 @@ along with this program; if not, see <http://www.gnu.org/licenses/>.
     die();
   }
   if ($num==1){
-    
     require_once(root."apps/".$row->com_id."/index.php");
   }
 

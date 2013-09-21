@@ -61,9 +61,9 @@ Gebe Formular aus
 
 
 	  <form action="index.php?action=verwalten&comid=<?=$_GET['comid']?>&appid=<?php echo $_GET['appid']; ?>&ac=edit&pageid=<?php echo $_GET['pageid']; ?>" method="POST">
-  <table style='border: 1px black solid; background-color:grey; color:black; width:90%;'>
-  <tr class="tr"><td>Titel der Seite:</td><td><input type="text" name="titel" value="<?php echo $row->titel; ?>"></td></tr>
-  <tr class="tr"><td>Menuzuordnung:</td>
+  <table class="table table-bordered table-stripped">
+  <tr><td>Titel der Seite:</td><td><input type="text" name="titel" value="<?php echo $row->titel; ?>"></td></tr>
+  <tr><td>Menuzuordnung:</td>
   <td>
 
   <select name="menu"><br />
@@ -75,7 +75,7 @@ Gebe Formular aus
 
   </select>  
 </td></tr>
-  <tr class="tr"><td valign="top">Inhalt:</td><td>  
+  <tr><td valign="top">Inhalt:</td><td style="width:100%;">
   
 <?php
 if ( !function_exists('version_compare') || version_compare( phpversion(), '5', '<' ) )
@@ -89,8 +89,8 @@ echo $CKEditor->editor("text", $row->text);
 ?>
   </td></tr>
 
-  <tr class="tr"><td>Seite vor l&ouml;schen sch&uuml;tzen ?</td><td><select name="del"><option value="true" selected>Nein</option><option value="false">Ja</option></select></td></tr>
-  <tr class="tr"><td>Optionen:</td><td><input type="submit" name="edit" value="Speichern"> | <input type="reset" name="reset" value="&Auml;nderungen verwerfen"></td></tr>
+  <tr><td>Seite vor l&ouml;schen sch&uuml;tzen ?</td><td><select name="del"><option value="true" selected>Nein</option><option value="false">Ja</option></select></td></tr>
+  <tr><td>Optionen:</td><td><input type="submit" name="edit" value="Speichern"> | <input type="reset" name="reset" value="&Auml;nderungen verwerfen"></td></tr>
 
   </form>
 </table>

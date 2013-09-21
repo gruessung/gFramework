@@ -28,7 +28,7 @@
 *
 * Additionally, you can limit the number of twits displayed.
 */
-  if (ini_get("curl")==0) { die ("<center>News können nicht abgerufen werden.<br><a href=\"http://twitter.com/gvisions\">Hier klicken</a></center>"); }
+  #if (ini_get("curl")==0) { die ("<center>News kï¿½nnen nicht abgerufen werden.<br><a href=\"http://twitter.com/gvisions\">Hier klicken</a></center>"); }
 	$FEED_URL = 'http://twitter.com/statuses/user_timeline/86693074.rss';
 	$NUM_ITEMS = '10';
 

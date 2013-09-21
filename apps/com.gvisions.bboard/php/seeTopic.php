@@ -71,8 +71,8 @@
       $tpl->replace("{countPostings}", getCountPostingsByAUser($row->autor));
       $tpl->replace("{date}", $date);
       $tpl->replace("{titel}", $row->name);
-      $tpl->replace("{text}", BBCode(htmlentities(utf8_encode($row->text))));
-	  echo "<!-- ".$row->text." -->";
+      $tpl->replace("{text}", BBCode(htmlentities($row->text)));
+
       
       
       $html .= $tpl->getTemplate();

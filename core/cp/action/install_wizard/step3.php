@@ -7,7 +7,8 @@ $xml = simplexml_load_file(root."temp/$xmlFileName");
 $downloadFile = $xml->zipfile;
 if ($lokal)
 {
-  $downloadFile = preg_replace("%PFAD%", root."/upload/", $downloadFile);
+    echo "<li>Lokale Datei gefunden!</li>";
+    $downloadFile = root."upload\\".basename($downloadFile);
 }
 $comid = $xml->comid;
 $desc = $xml->desc;
@@ -63,7 +64,7 @@ echo 'Fehler beim entpacken!<br />';
 $newExt->Delete($comid);
 echo $xml->typede." wurde aus der Datenbank gel�scht<br />";
 @unlink(root."temp/".$fileName);
-echo "<li>Tempor�re Dateien wurden gel�scht";
+echo "<li>Tempor&auml;re Dateien wurden gel&ouml;scht";
 #}
 }
 if (!empty($xml->installsql)) {
@@ -75,14 +76,14 @@ if (!empty($xml->installsql)) {
   foreach ($data as $que)
   {
     $que = preg_replace("%AID%",$newExt->getID($comid),$que);
-    if($db->query(preg_replace("%PFW%",pfw,$que))==false) {  
-    echo "<li>Fehler beim vornehmen der Datenbank&auml;nderungen";
-    $newExt->Delete($comid);
-    echo $xml->typede." wurde aus der Datenbank gel�scht<br />";
+    if($db->query(preg_replace("%PFW%",pfw,$que))==false) {
+        echo "<li>Fehler beim vornehmen der Datenbank&auml;nderungen";
+        $newExt->Delete($comid);
+        echo $xml->typede." wurde aus der Datenbank gel�scht<br />";
     }
     else 
     {
-    echo "<li>Datenbank&auml;nderungen wurden vorgenommen...";
+        echo "<li>Datenbank&auml;nderungen wurden vorgenommen...";
     }
   }
 }
