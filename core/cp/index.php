@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <?php
 require_once("../init.php");
+$self = explode("core/cp/index.php",$_SERVER['PHP_SELF']);
+$self = $self[0];
+define ("web_root", $self);
 ?>
 <html lang="de">
   <head>
@@ -123,7 +126,7 @@ require_once("../init.php");
 						</ul>
 				</li>				
 
-				<li><a target="_blank" href="filemanager/filemanager.php">Filemanager</a></li>
+				<li><a href="index.php?action=fm">Filemanager</a></li>
 				<li><a href="index.php?action=logout">Logout</a></li>
 			</ul>
 
@@ -165,7 +168,7 @@ require_once("../init.php");
 								  "verwalten" => "system",
 								  "activate" => "system",
 								  "logout" => "acp",
-								  "filemanager" => "system",
+								  "fm" => "system",
                                   "design" => "system");
 				  
 				  $user = new gUserManagement();

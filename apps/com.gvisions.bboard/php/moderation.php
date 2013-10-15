@@ -5,7 +5,8 @@
 		if (!is_numeric($id)) die("Fehler bei ID");
 		$db = new db();
 		$user = new gUserManagement();
-		if (/*$row->autor != $user->getCurrentUser() ||*/ $user->userGroup($user->getCurrentUser()) != admin_group)
+        if ($user->isAllowed($user->getCurrentUser(), "bboard_moderator"))
+		//if (/*$row->autor != $user->getCurrentUser() ||*/ $user->userGroup($user->getCurrentUser()) != admin_group)
 		{
 			die ("Du bist nicht zu dieser Aktion berechtigt.");	
 		}
@@ -20,6 +21,11 @@
 		$db->query($sql);
 		$html .= "Der Beitrag wurde moderiert.<br /><a href=\"javascript:history.back();\">zur&uuml;ck</a>";
 	}
+
+    else if(isset($_GET["closeThread"]))
+    {
+
+    }
 
 		
 ?>

@@ -4,12 +4,12 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
 CKEDITOR.editorConfig = function(config) {
-   config.filebrowserBrowseUrl = './filemanager/filemanager.php';
-   config.filebrowserImageBrowseUrl = './filemanager/filemanager.php';
-   config.filebrowserFlashBrowseUrl = './filemanager/filemanager.php';
-   config.filebrowserUploadUrl = './filemanager/filemanager.php';
-   config.filebrowserImageUploadUrl = './filemanager/filemanager.php';
-   config.filebrowserFlashUploadUrl = './filemanager/filemanager.php';
+   config.filebrowserBrowseUrl = './index.php?action=fm';
+   config.filebrowserImageBrowseUrl = './index.php?action=fm';
+   config.filebrowserFlashBrowseUrl = './index.php?action=fm';
+   config.filebrowserUploadUrl = './index.php?action=fm';
+   config.filebrowserImageUploadUrl = './index.php?action=fm';
+   config.filebrowserFlashUploadUrl = './index.php?action=fm';
    
    config.contentsCss = '../../styles/bootstrap/css/bootstrap.css';
    

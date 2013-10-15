@@ -215,9 +215,11 @@ error_reporting(E_ALL);
 		// Useronline-Counter
 		//require_once plugins.'BBoard/php/online.php';
 
-		
+    $menuID = bboard_menuid;
+
+
     $template = new gTPL();
-    $template->menuid = bboard_menuid;
+    $template->menuid = $menuID;
     $template->id = 1;
     $template->sitename = "Forum - ".$titel;
     $template->text = $html;

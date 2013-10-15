@@ -56,7 +56,7 @@
       
       $date = date("d.m.Y H:i",$row->date);
       $tpl->replace("{postID}", $row->id);
-      if ($user->userGroup($user->getCurrentUser()) == admin_group)
+      if ($user->isAllowed($user->getCurrentUser(), "bboard_moderator") OR $user->getCurrentUser() == $row->autor )
       {
       	$mod = new gTPL();
       	$mod->fetchTemplate(apppath."/tpl/seeTopic-mod.tpl");
