@@ -4,6 +4,32 @@ require_once("../init.php");
 $self = explode("core/cp/index.php",$_SERVER['PHP_SELF']);
 $self = $self[0];
 define ("web_root", $self);
+
+/* Hier werden die gCP Seiten den Rechten zugeordnet */
+$rechte = array("checkUpdates" => "install",
+    "download" => "install",
+    "installieren" => "install",
+    "unistall" => "install",
+    "installUpdates" => "install",
+    "install_upload" => "install",
+    "list" => "acp",
+    "login" => "none",
+    "main" => "acp",
+    "nopermission" => "none",
+    "verwalten" => "system",
+    "activate" => "system",
+    "logout" => "acp",
+    "fm" => "system",
+    "design" => "system");
+
+if (!isset($_GET['action'])){
+    $action = "main";
+}
+else
+{
+    $action = $_GET['action'];
+}
+@$flag = $rechte[$action];
 ?>
 <html lang="de">
   <head>
@@ -63,15 +89,13 @@ define ("web_root", $self);
           <div class="nav-collapse collapse">
 		  <?php
 			$user = new gUserManagement();
-			if ($user->ifLogin())
+			if ($user->isAllowed($_SESSION['userid'],$flag)==true && $user->isAllowed($_SESSION['userid'],"acp")==true)
 			{
 		  ?>
             <p class="navbar-text pull-right">
               Hallo <a href="#" class="navbar-link"><?=$user->getUsername()?></a>!
             </p>   			
-              <?php
-			  }
-			  ?>
+
 			<ul class="nav">
 				<li><a href="index.php">Start</a></li>
 
@@ -129,7 +153,9 @@ define ("web_root", $self);
 				<li><a href="index.php?action=fm">Filemanager</a></li>
 				<li><a href="index.php?action=logout">Logout</a></li>
 			</ul>
-
+            <?php
+            }
+          ?>
 
           </div><!--/.nav-collapse -->
         </div>
@@ -149,27 +175,12 @@ define ("web_root", $self);
 				<?php
 
 				  if (site_online == "false") {
-					 echo '<center><div class="alert alert-warning">Bitte beachte!<br>Deine Website ist gerade offline.</center>';
+					 echo '<center><div class="alert alert-error"><b>Bitte beachte!</b><br>Deine Website ist gerade offline.</center>';
 				  }
 
   
   
-				  /* Hier werden die gCP Seiten den Rechten zugeordnet */
-				  $rechte = array("checkUpdates" => "install",
-								  "download" => "install",
-								  "installieren" => "install",
-								  "unistall" => "install",
-								  "installUpdates" => "install",
-								  "install_upload" => "install",
-								  "list" => "acp",
-								  "login" => "none",
-								  "main" => "acp",
-								  "nopermission" => "none",
-								  "verwalten" => "system",
-								  "activate" => "system",
-								  "logout" => "acp",
-								  "fm" => "system",
-                                  "design" => "system");
+
 				  
 				  $user = new gUserManagement();
 				  if (!$user->ifLogin()) {
@@ -178,14 +189,7 @@ define ("web_root", $self);
 					die();
 				  }
 
-				  if (!isset($_GET['action'])){
-					$action = "main";
-				  }
-				  else
-				  {
-					$action = $_GET['action'];
-				  }
-				  @$flag = $rechte[$action];
+
 				  if ($user->isAllowed($_SESSION['userid'],$flag)==true && $user->isAllowed($_SESSION['userid'],"acp")==true) {
 					error_log($user->getUserName($_SESSION['userid'])." - $action\n", 3, root."/corecp.log");
 					require_once("action/".$action.".php");

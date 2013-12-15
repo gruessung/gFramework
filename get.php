@@ -11,6 +11,11 @@ $file = $_GET["file"];
 if (empty($file)) die();
 $f = "./core/cp/filemanager$file";
 
+if (!file_exists($f) or !is_file($f) or $file == "")
+{
+    header("HTTP/1.0 404 Not Found");
+}
+
 $info = getimagesize($f);
 
 $file_name = explode("/", $file);

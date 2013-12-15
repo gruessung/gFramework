@@ -113,7 +113,7 @@
         $sql = "UPDATE `".db."`.`".pfw."_user` SET `username` = '".$user."',
                 `password` = '".$pass."' ,
                 `mail` = '".$mail."',
-                `group` = '".$group."' WHERE `gframework_user`.`id` =".$id.";
+                `group` = '".$group."' WHERE `".pfw."_user`.`id` =".$id.";
                ";
         $db->query($sql);
         echo "User gespeichert.";

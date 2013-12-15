@@ -1,4 +1,12 @@
 <?php
+//hard coded redirect
+if (isset($_GET["action"]))
+{
+    if ($_GET["action"] == "fm")
+    {
+        header("Location: core/cp/index.php?action=fm");
+    }
+}
 /*
 gFramework
 Copyright (C) 2012 gVisions
@@ -34,7 +42,8 @@ along with this program; if not, see <http://www.gnu.org/licenses/>.
 		
 	}
 	define ("web_root", $self);
-  
+
+
   
   $debug = "";
   require_once("./core/init.php");
