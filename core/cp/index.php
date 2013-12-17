@@ -89,6 +89,8 @@ else
           <div class="nav-collapse collapse">
 		  <?php
 			$user = new gUserManagement();
+			if ($user->ifLogin())
+			{
 			if ($user->isAllowed($_SESSION['userid'],$flag)==true && $user->isAllowed($_SESSION['userid'],"acp")==true)
 			{
 		  ?>
@@ -155,6 +157,7 @@ else
 			</ul>
             <?php
             }
+			}
           ?>
 
           </div><!--/.nav-collapse -->
