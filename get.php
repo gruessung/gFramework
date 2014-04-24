@@ -9,9 +9,11 @@
 
 $file = $_GET["file"];
 if (empty($file)) die();
-$f = "./core/cp/filemanager$file";
+$f = realpath("./core/cp/filemanager/$file");
 
-if (!file_exists($f) or !is_file($f) or $file == "")
+
+
+if (!file_exists($f) or !is_file($f) or $file == "" or strpos($a,'/core/cp/filemanager/') !== true)
 {
     header("HTTP/1.0 404 Not Found");
 }
