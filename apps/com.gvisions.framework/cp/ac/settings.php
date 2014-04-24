@@ -38,7 +38,7 @@
 		<td>Seitentitel</td><td><input type="text" name="newtitle" value="<?=$title?>" /></td>
     </tr>
     <tr>
-        <td>SEO Url  <a class="label label-warning">Beta</a></td><td><input type="checkbox" name="seo" <?php if ($seo_url =="true") echo "checked"; ?>  /> <small>Aktivieren</small></td>
+        <td>SEO Url  <a class="label label-warning">Beta</a></td><td><!--<input type="checkbox" name="seo" <?php if ($seo_url =="true") echo "checked"; ?>  /> <small>Aktivieren</small>--><small>Funktion wurde vorr&uuml;bergehend aus gFramework entfernt.</small></td>
 
 	</tr>
 
